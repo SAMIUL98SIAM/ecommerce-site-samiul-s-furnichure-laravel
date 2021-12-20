@@ -66,4 +66,13 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/update/{id}',[\App\Http\Controllers\Admin\SliderController::class,'update'])->name('sliders.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\SliderController::class,'destroy'])->name('sliders.delete');
     });
+
+    Route::prefix('contacts')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\ContactController::class,'index'])->name('contacts.view');
+        Route::get('/create',[\App\Http\Controllers\Admin\ContactController::class,'create'])->name('contacts.create');
+        Route::post('/create',[\App\Http\Controllers\Admin\ContactController::class,'store'])->name('contacts.store');
+        Route::get('/edit/{id}',[\App\Http\Controllers\Admin\ContactController::class,'edit'])->name('contacts.edit');
+        Route::post('/update/{id}',[\App\Http\Controllers\Admin\ContactController::class,'update'])->name('contacts.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\ContactController::class,'destroy'])->name('contacts.delete');
+    });
 });
