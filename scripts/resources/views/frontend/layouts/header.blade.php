@@ -28,7 +28,8 @@
 
                 <!-- Logo desktop -->
                 <a href="{{route('frontend.home')}}" class="logo">
-                    <img src="{{asset('/frontend/images/logo/logo.png')}}" alt="IMG-LOGO">
+                    {{-- <img src="{{asset('/frontend/images/logo/logo.png')}}" alt="IMG-LOGO"> --}}
+                    <img src="{{!empty($logo->image)?url('/scripts/public/upload/logo_image/'.$logo->image):url('/upload/no_image.jpg/')}}" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->

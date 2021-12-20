@@ -57,4 +57,13 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/update/{id}',[\App\Http\Controllers\Admin\LogoController::class,'update'])->name('logos.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\LogoController::class,'destroy'])->name('logos.delete');
     });
+
+    Route::prefix('sliders')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\SliderController::class,'index'])->name('sliders.view');
+        Route::get('/create',[\App\Http\Controllers\Admin\SliderController::class,'create'])->name('sliders.create');
+        Route::post('/create',[\App\Http\Controllers\Admin\SliderController::class,'store'])->name('sliders.store');
+        Route::get('/edit/{id}',[\App\Http\Controllers\Admin\SliderController::class,'edit'])->name('sliders.edit');
+        Route::post('/update/{id}',[\App\Http\Controllers\Admin\SliderController::class,'update'])->name('sliders.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\SliderController::class,'destroy'])->name('sliders.delete');
+    });
 });
