@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['categories']= Category::all();
-        return view('admin.category.index',$data);
+        $data['brands']= Brand::all();
+        return view('admin.brand.index',$data);
     }
 
     /**
@@ -38,11 +38,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category() ;
-        $category->name = $request->name ;
-        $category->created_by = Auth::user()->id;
-        $category->save();
-        return redirect()->route('categories.view')->with('success','You Added Category');
+        $brand = new Brand() ;
+        $brand->name = $request->name ;
+        $brand->created_by = Auth::user()->id;
+        $brand->save();
+        return redirect()->route('brands.view')->with('success','You Added Brand');
     }
 
     /**
@@ -76,11 +76,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id) ;
-        $category->name = $request->name ;
-        $category->updated_by = Auth::user()->id;
-        $category->save();
-        return redirect()->route('categories.view')->with('success','Category updated successfully');
+        $brand = Brand::find($id) ;
+        $brand->name = $request->name ;
+        $brand->updated_by = Auth::user()->id;
+        $brand->save();
+        return redirect()->route('brands.view')->with('success','Brand updated successfully');
     }
 
     /**
@@ -91,10 +91,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category =  Category::destroy($id);
-        if($category)
+        $brand =  Brand::destroy($id);
+        if($brand)
         {
-            return redirect()->route('categories.view')->with('error','Delete these Category');
+            return redirect()->route('brands.view')->with('error','Delete these guy');
         }
     }
 }
+
+

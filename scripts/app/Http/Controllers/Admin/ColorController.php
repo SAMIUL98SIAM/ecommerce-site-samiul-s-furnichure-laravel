@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Color;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['categories']= Category::all();
-        return view('admin.category.index',$data);
+        $data['colors']= Color::all();
+        return view('admin.color.index',$data);
     }
 
     /**
@@ -38,11 +38,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category() ;
-        $category->name = $request->name ;
-        $category->created_by = Auth::user()->id;
-        $category->save();
-        return redirect()->route('categories.view')->with('success','You Added Category');
+        $color = new Color() ;
+        $color->name = $request->name ;
+        $color->created_by = Auth::user()->id;
+        $color->save();
+        return redirect()->route('colors.view')->with('success','You Added Color');
     }
 
     /**
@@ -76,11 +76,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id) ;
-        $category->name = $request->name ;
-        $category->updated_by = Auth::user()->id;
-        $category->save();
-        return redirect()->route('categories.view')->with('success','Category updated successfully');
+        $color = Color::find($id) ;
+        $color->name = $request->name ;
+        $color->updated_by = Auth::user()->id;
+        $color->save();
+        return redirect()->route('colors.view')->with('success','Color updated successfully');
     }
 
     /**
@@ -91,10 +91,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category =  Category::destroy($id);
-        if($category)
+        $color =  Color::destroy($id);
+        if($color)
         {
-            return redirect()->route('categories.view')->with('error','Delete these Category');
+            return redirect()->route('colors.view')->with('error','Delete these Color');
         }
     }
 }
+

@@ -91,9 +91,23 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::prefix('categories')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('categories.view');
-        Route::get('/create',[\App\Http\Controllers\Admin\CategoryController::class,'create'])->name('categories.create');
         Route::post('/create',[\App\Http\Controllers\Admin\CategoryController::class,'store'])->name('categories.store');
         Route::put('/update/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'update'])->name('categories.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'destroy'])->name('categories.delete');
     });
+
+    Route::prefix('colors')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\ColorController::class,'index'])->name('colors.view');
+        Route::post('/create',[\App\Http\Controllers\Admin\ColorController::class,'store'])->name('colors.store');
+        Route::put('/update/{id}',[\App\Http\Controllers\Admin\ColorController::class,'update'])->name('colors.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\ColorController::class,'destroy'])->name('colors.delete');
+    });
+
+    Route::prefix('brands')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\BrandController::class,'index'])->name('brands.view');
+        Route::post('/create',[\App\Http\Controllers\Admin\BrandController::class,'store'])->name('brands.store');
+        Route::put('/update/{id}',[\App\Http\Controllers\Admin\BrandController::class,'update'])->name('brands.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\BrandController::class,'destroy'])->name('brands.delete');
+    });
+
 });
