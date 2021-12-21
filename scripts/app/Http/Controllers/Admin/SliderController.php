@@ -44,7 +44,6 @@ class SliderController extends Controller
         $slider->short_title = $request->short_title;
         $slider->long_title = $request->long_title;
         $slider->created_by = Auth::user()->id;
-        $slider->updated_by = Auth::user()->id;
         if($request->file('image')){
             $file = $request->file('image');
             //@unlink(public_path('upload/slider_image'.$slider->image));
@@ -91,7 +90,6 @@ class SliderController extends Controller
         $slider = Slider::find($id);
         $slider->short_title = $request->short_title;
         $slider->long_title = $request->long_title;
-        $slider->created_by = Auth::user()->id;
         $slider->updated_by = Auth::user()->id;
         if($request->file('image')){
             $file = $request->file('image');

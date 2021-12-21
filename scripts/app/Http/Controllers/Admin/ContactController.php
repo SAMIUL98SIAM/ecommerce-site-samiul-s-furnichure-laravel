@@ -51,7 +51,6 @@ class ContactController extends Controller
         $contact->linkedin = $request->linkedin ;
         $contact->google_plus = $request->google_plus ;
         $contact->created_by = Auth::user()->id;
-        $contact->updated_by = Auth::user()->id;
         $contact->save();
         return redirect()->route('contacts.view')->with('success','You Added Contact');
     }
@@ -99,7 +98,6 @@ class ContactController extends Controller
         $contact->youtube = $request->youtube ;
         $contact->linkedin = $request->linkedin ;
         $contact->google_plus = $request->google_plus ;
-        $contact->created_by = Auth::user()->id;
         $contact->updated_by = Auth::user()->id;
         $contact->save();
         return redirect()->route('contacts.view')->with('success','Contacts updated successfully');

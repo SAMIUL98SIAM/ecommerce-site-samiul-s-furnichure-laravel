@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-use App\Models\About;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class CategoryController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +16,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $data['countAbout'] = About::count();
-        $data['allData']= About::all();
-        // $data['allData']= About::all();
-        return view('admin.about.index',$data);
+        $data['categories']= Category::all();
+        return view('admin.category.index',$data);
     }
 
     /**
@@ -41,12 +38,11 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-
-        $about = new About() ;
-        $about->description = $request->description ;
-        $about->created_by = Auth::user()->id;
-        $about->save();
-        return redirect()->route('abouts.view')->with('success','You Added about');
+        $category = new Category() ;
+        $category->name = $request->name ;
+        $category->created_by = Auth::user()->id;
+        $category->save();
+        return redirect()->route('categories.view')->with('success','You Added Category');
     }
 
     /**
@@ -68,8 +64,7 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $data['about'] = About::find($id);
-        return view('admin.about.edit',$data);
+        //
     }
 
     /**
@@ -81,11 +76,11 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $about = About::find($id) ;
-        $about->description = $request->description ;
-        $about->updated_by = Auth::user()->id;
-        $about->save();
-        return redirect()->route('abouts.view')->with('success','abouts updated successfully');
+        $category = Category::find($id) ;
+        $category->name = $request->name ;
+        $category->updated_by = Auth::user()->id;
+        $category->save();
+        return redirect()->route('categories.view')->with('success','Category updated successfully');
     }
 
     /**
@@ -96,10 +91,10 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        $about =  About::destroy($id);
-        if($about)
+        $category =  Category::destroy($id);
+        if($category)
         {
-            return redirect()->route('abouts.view')->with('error','Delete these guy');
+            return redirect()->route('categories.view')->with('error','Delete these guy');
         }
     }
 }
