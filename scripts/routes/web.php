@@ -110,4 +110,11 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\BrandController::class,'destroy'])->name('brands.delete');
     });
 
+    Route::prefix('sizes')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\SizeController::class,'index'])->name('sizes.view');
+        Route::post('/create',[\App\Http\Controllers\Admin\SizeController::class,'store'])->name('sizes.store');
+        Route::put('/update/{id}',[\App\Http\Controllers\Admin\SizeController::class,'update'])->name('sizes.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\SizeController::class,'destroy'])->name('sizes.delete');
+    });
+
 });

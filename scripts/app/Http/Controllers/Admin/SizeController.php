@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+use App\Models\Size;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class SizeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data['brands']= Brand::all();
-        return view('admin.brand.index',$data);
+        $data['sizes']= Size::all();
+        return view('admin.size.index',$data);
     }
 
     /**
@@ -38,11 +38,11 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $brand = new Brand() ;
-        $brand->name = $request->name ;
-        $brand->created_by = Auth::user()->id;
-        $brand->save();
-        return redirect()->route('brands.view')->with('success','You Added Brand');
+        $size = new Size() ;
+        $size->name = $request->name ;
+        $size->created_by = Auth::user()->id;
+        $size->save();
+        return redirect()->route('sizes.view')->with('success','You Added Size');
     }
 
     /**
@@ -76,11 +76,11 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $brand = Brand::find($id) ;
-        $brand->name = $request->name ;
-        $brand->updated_by = Auth::user()->id;
-        $brand->save();
-        return redirect()->route('brands.view')->with('success','Brand updated successfully');
+        $size = Size::find($id) ;
+        $size->name = $request->name ;
+        $size->updated_by = Auth::user()->id;
+        $size->save();
+        return redirect()->route('sizes.view')->with('success','Size updated successfully');
     }
 
     /**
@@ -91,12 +91,10 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $brand =  Brand::destroy($id);
-        if($brand)
+        $size =  Size::destroy($id);
+        if($size)
         {
-            return redirect()->route('brands.view')->with('error','Delete these Brand');
+            return redirect()->route('sizes.view')->with('error','Delete these Size');
         }
     }
 }
-
-
