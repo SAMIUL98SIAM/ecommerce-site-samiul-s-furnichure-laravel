@@ -47,7 +47,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="">ABOUT US</a>
+                            <a href="{{route('frontend.about_us')}}">ABOUT US</a>
                         </li>
                         <li>
                             <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
@@ -128,7 +128,7 @@
                 </span>
             </li>
             <li>
-                <a href="">ABOUT US</a>
+                <a href="{{route('frontend.about_us')}}">ABOUT US</a>
             </li>
             <li>
                 <a href="{{route('frontend.contact_us')}}">CONTACT US</a>

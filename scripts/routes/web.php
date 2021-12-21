@@ -20,6 +20,7 @@ Route::get('/product-detail', [App\Http\Controllers\Frontend\FrontendController:
 Route::get('/shopping-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'shopping_cart'])->name('frontend.shopping_cart');
 Route::get('/contact-us', [App\Http\Controllers\Frontend\FrontendController::class, 'contact_us'])->name('frontend.contact_us');
 Route::post('/contact-us', [App\Http\Controllers\Frontend\EmailController::class, 'email_send'])->name('frontend.contact_us.store');
+Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class, 'about_us'])->name('frontend.about_us');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -65,6 +66,9 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/edit/{id}',[\App\Http\Controllers\Admin\SliderController::class,'edit'])->name('sliders.edit');
         Route::post('/update/{id}',[\App\Http\Controllers\Admin\SliderController::class,'update'])->name('sliders.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\SliderController::class,'destroy'])->name('sliders.delete');
+
+        Route::get('/activate/{id}',[App\Http\Controllers\Admin\SliderController::class,'activate'])->name('sliders.activate');
+    Route::get('/unactivate/{id}',[App\Http\Controllers\Admin\SliderController::class,'unactivate'])->name('sliders.unactivate');
     });
 
     Route::prefix('contacts')->group(function(){
@@ -74,5 +78,14 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/edit/{id}',[\App\Http\Controllers\Admin\ContactController::class,'edit'])->name('contacts.edit');
         Route::post('/update/{id}',[\App\Http\Controllers\Admin\ContactController::class,'update'])->name('contacts.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\ContactController::class,'destroy'])->name('contacts.delete');
+    });
+
+    Route::prefix('abouts')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\AboutController::class,'index'])->name('abouts.view');
+        Route::get('/create',[\App\Http\Controllers\Admin\AboutController::class,'create'])->name('abouts.create');
+        Route::post('/create',[\App\Http\Controllers\Admin\AboutController::class,'store'])->name('abouts.store');
+        Route::get('/edit/{id}',[\App\Http\Controllers\Admin\AboutController::class,'edit'])->name('abouts.edit');
+        Route::post('/update/{id}',[\App\Http\Controllers\Admin\AboutController::class,'update'])->name('abouts.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\AboutController::class,'destroy'])->name('abouts.delete');
     });
 });

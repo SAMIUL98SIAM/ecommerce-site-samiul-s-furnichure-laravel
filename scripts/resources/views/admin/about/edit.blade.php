@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Communicate</h1>
+                    <h1 class="m-0">Manage About Us</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Communicate</li>
+                    <li class="breadcrumb-item active">About Us</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,36 +30,28 @@
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
                 <div class="card-header">
-                    <h3>Communicate List</h3>
-
+                    <h3>Edit About Us</h3>
+                    <a class="btn btn-success float-right btn-sm" href="{{route('abouts.view')}}"><i class="fa fa-list">About US List</i></a>
                 </div><!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Serial</th>
-                                <th>Name</th>
-                                <th>Mobile</th>
-                                <th>Email</th>
-                                <th>Message</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($allData as $key=>$data)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$data->name}}</td>
-                                <td>{{$data->mobile}}</td>
-                                <td>{{$data->email}}</td>
-                                <td>{{$data->msg}}</td>
-                                <td>
-                                    <a title="Delete" href="{{route('communicates.delete',$data->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="card">
+                        <div class="card-body">
+                           <form method="post" action="{{ route('abouts.update',$about->id) }}" id="myForm" enctype="multipart/form-data">
+                            <div class="row">
+                                @csrf
+                                <div class="form-group">
+                                    <label class="address">Description</label>
+                                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description">{{$about->description}}</textarea>
+                                </div>
+                                <div class="col-2" style="padding-top: 30px;">
+                                    <input type="submit" value="Update" class="btn btn-primary">
+                                </div>
+                            </div>
+                         </form>
+                        {{-- <div class="row"> --}}
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
                 </div><!-- /.card-body -->
             </div>
             <!-- /.card -->

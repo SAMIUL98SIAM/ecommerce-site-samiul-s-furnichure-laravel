@@ -58,6 +58,11 @@
                                 <td>
                                     <a title="Edit" href="{{route('sliders.edit',$slider->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                     <a title="Delete" href="{{route('sliders.delete',$slider->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>
+                                    @if ($slider->status == 1)
+                                    <a href="{{route('sliders.unactivate',$slider->id)}}" class="btn btn-success">Unactivate</a>
+                                    @else
+                                    <a href="{{route('sliders.activate',$slider->id)}}" class="btn btn-warning">Activate</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

@@ -120,4 +120,20 @@ class SliderController extends Controller
         $slider->delete();
         return redirect()->route('sliders.view')->with('error','slider has been deleted');
     }
+
+    public function activate($id)
+    {
+        $slider = Slider::find($id);
+        $slider->status = 1;
+        $slider->update();
+        return redirect()->route('sliders.view')->with('status','Slider has been activated');
+    }
+
+    public function unactivate($id)
+    {
+        $slider = Slider::find($id);
+        $slider->status = 0;
+        $slider->update();
+        return redirect()->route('sliders.view')->with('error','Slider has been unactivated');
+    }
 }

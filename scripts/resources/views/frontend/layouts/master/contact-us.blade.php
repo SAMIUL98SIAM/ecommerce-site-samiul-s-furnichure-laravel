@@ -65,7 +65,7 @@
                             </span>
 
                             <p class="stext-115 cl6 size-213 p-t-18">
-                                Notun bazar,Gulshan-Dhaka
+                                {{$contact->address}}
                             </p>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                             </span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
-                                +088 01992569682
+                                {{$contact->mobile_no}}
                             </p>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             </span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
-                                samiulsiam59@gmail.com
+                                {{$contact->email}}
                             </p>
                         </div>
                     </div>
