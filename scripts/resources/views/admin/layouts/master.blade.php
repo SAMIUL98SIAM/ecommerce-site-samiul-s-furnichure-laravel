@@ -39,7 +39,9 @@
   <script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
   <!-- Handlebars -->
   <script src="{{asset('/admin/js/handlebars/handlebars.min.js')}}"></script>
-
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset('/admin/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 
   <style type="text/css">
       .notifyjs-corner{
@@ -146,7 +148,7 @@
 <script src="{{asset('/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-
+<script src="{{asset('/admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- jquery-validation -->
 <script src="{{asset('/admin/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <!-- Page specific script -->

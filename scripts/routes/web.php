@@ -73,7 +73,7 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::prefix('contacts')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\ContactController::class,'index'])->name('contacts.view');
-        Route::get('/create',[\App\Http\Controllers\Admin\ContactController::class,'create'])->name('contacts.create');
+
         Route::post('/create',[\App\Http\Controllers\Admin\ContactController::class,'store'])->name('contacts.store');
         Route::get('/edit/{id}',[\App\Http\Controllers\Admin\ContactController::class,'edit'])->name('contacts.edit');
         Route::post('/update/{id}',[\App\Http\Controllers\Admin\ContactController::class,'update'])->name('contacts.update');
@@ -115,6 +115,16 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/create',[\App\Http\Controllers\Admin\SizeController::class,'store'])->name('sizes.store');
         Route::put('/update/{id}',[\App\Http\Controllers\Admin\SizeController::class,'update'])->name('sizes.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\SizeController::class,'destroy'])->name('sizes.delete');
+    });
+
+    Route::prefix('products')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\ProductController::class,'index'])->name('products.view');
+        Route::get('/create',[\App\Http\Controllers\Admin\ProductController::class,'create'])->name('products.create');
+        Route::post('/create',[\App\Http\Controllers\Admin\ProductController::class,'store'])->name('products.store');
+        Route::get('/edit/{id}',[\App\Http\Controllers\Admin\ProductController::class,'edit'])->name('products.edit');
+        Route::post('/update/{id}',[\App\Http\Controllers\Admin\ProductController::class,'update'])->name('products.update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\ProductController::class,'destroy'])->name('products.delete');
+        Route::get('/details/{id}',[\App\Http\Controllers\Admin\ProductController::class,'show'])->name('products.details');
     });
 
 });
