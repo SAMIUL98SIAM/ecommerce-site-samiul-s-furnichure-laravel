@@ -73,6 +73,9 @@
                         </thead>
                         <tbody>
                             @foreach ($sizes as $key=>$size)
+                            @php
+                            $count_size = App\Models\ProductSize::where('size_id',$size->id)->count();
+                            @endphp
                             <tr>
                                 <td>{{$key+1}}</td>
                                 <td>{{$size->name}}</td>
@@ -107,7 +110,9 @@
                                         </div>
                                     </div>
                                     {{--Edit Modal--}}
+                                    @if ($count_size<1)
                                     <a title="Delete" href="{{route('sizes.delete',$size->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

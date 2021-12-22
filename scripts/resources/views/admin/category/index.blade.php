@@ -73,7 +73,10 @@
                         </thead>
                         <tbody>
                             @foreach ($categories as $key=>$category)
-                            <tr>
+                            @php
+                                $count_category = App\Models\Product::where('category_id',$category->id)->count();
+                            @endphp
+                            <tr class="{{$category->id}}">
                                 <td>{{$key+1}}</td>
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->created_by}}</td>
@@ -107,7 +110,9 @@
                                         </div>
                                     </div>
                                     {{--Edit Modal--}}
-                                    <a title="Delete" href="{{route('categories.delete',$category->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>
+                                    @if($count_category < 1)
+                                    <a title="Delete" href="{{route('categories.delete',$category->id)}}" class="btn btn-sm btn-danger" data-id="{{$category->id}}" id="delete"><i class="fas fa-trash"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

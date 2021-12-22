@@ -71,9 +71,9 @@
                                     </select>
                                 </div>
                                 <div class="col-6">
-                                    <label class="size_id">Color</label>
+                                    <label class="size_id">Size</label>
                                     <select name="size_id[]" id="size_id" class="form-control select2 form-control-sm" multiple>
-                                        <option  value="">Select Color</option>
+                                        <option  value="">Select Size</option>
                                         @foreach($sizes as $size)
                                             <option value="{{$size->id}}" {{(@in_array(['size_id'=>$size->id],$size_array))?"selected":""}}>{{$size->name}}</option>
                                         @endforeach

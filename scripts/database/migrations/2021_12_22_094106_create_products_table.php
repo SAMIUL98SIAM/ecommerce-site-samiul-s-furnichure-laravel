@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id');
             $table->string('name')->unique();
             $table->double('price');
+            $table->string('slug')->nullable();
             $table->text('short_desc')->nullable();
             $table->longText('long_desc')->nullable();
             $table->string('image')->nullable();
