@@ -31,7 +31,6 @@ Route::post('/add-to-cart', [App\Http\Controllers\Frontend\CartController::class
 Route::get('/shopping-cart', [App\Http\Controllers\Frontend\CartController::class, 'shopping_cart'])->name('frontend.shopping_cart');
 Route::post('/update-to-cart', [App\Http\Controllers\Frontend\CartController::class, 'updateToCart'])->name('frontend.cart.update');
 Route::get('/delete-cart/{rowId}', [App\Http\Controllers\Frontend\CartController::class, 'deleteCart'])->name('frontend.cart.delete');
-
 /*Shopping Cart*/
 
 
