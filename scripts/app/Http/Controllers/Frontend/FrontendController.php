@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Logo;
 use App\Models\About;
+use App\Models\Category;
 use App\Models\Slider;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -16,6 +18,11 @@ class FrontendController extends Controller
         $data['logo'] = Logo::first();
         $data['sliders'] = Slider::where('status',1)->get();;
         $data['contact'] = Contact::first();
+
+        $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
+        $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
+        $data['products'] = Product::orderBy('id','desc')->get();
+        // $data['products'] = Product::orderBy('id','desc')->paginate(6);
         return view('frontend.layouts.master.home',$data);
     }
     public function product_detail()
@@ -45,5 +52,41 @@ class FrontendController extends Controller
         $data['about'] = About::first();
         return view('frontend.layouts.master.about-us',$data);
     }
+
+    public function product_list()
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+
+        $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
+        $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
+        $data['products'] = Product::orderBy('id','desc')->get();
+
+        return view('frontend.layouts.master.product-list',$data);
+    }
+
+    public function categoryWiseProduct($category_id)
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+
+        $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
+        $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
+
+        $data['products'] = Product::where('category_id',$category_id)->orderBy('id','desc')->get();
+        return view('frontend.layouts.master.category-wise-product',$data);
+    }
+    public function brandWiseProduct($brand_id)
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+
+        $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
+        $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
+
+        $data['products'] = Product::where('brand_id',$brand_id)->orderBy('id','desc')->get();
+        return view('frontend.layouts.master.brand-wise-product',$data);
+    }
+
 
 }

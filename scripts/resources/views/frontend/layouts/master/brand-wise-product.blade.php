@@ -1,34 +1,14 @@
 @extends('frontend.layouts.master')
 @section('content')
-    <!-- Slider -->
-    <section class="section-slide">
-        <div class="wrap-slick1">
-            <div class="slick1">
-                @foreach ($sliders as $slider)
-                <div class="item-slick1" style="background-image: url({{asset('/scripts/public/upload/slider_image/'.$slider->image)}});">
-                    <div class="container h-full">
-                        <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                            <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-                                <span class="ltext-101 cl2 respon2">
-                                    {{$slider->short_title}}
-                                </span>
-                            </div>
-
-                            <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-                                <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                    {{$slider->long_title}}
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{asset('/frontend/images/bg-01.jpg')}}');">
+        <h2 class="ltext-105 cl0 txt-center">
+            Brand Wise List
+        </h2>
     </section>
-    <!-- Slider/ -->
+    <!-- Title page/ -->
 
-    <!-- Product -->
+    <!-- Content page -->
     <section class="bg0 p-t-23 p-b-140">
         <div class="container">
             <div class="flex-w flex-sb-m p-b-52">
@@ -39,8 +19,6 @@
                     @foreach ($categories as $category)
                     <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" href="{{route('frontend.categoryWiseProduct',$category->category_id)}}">{{$category->category->name}}</a>
                     @endforeach
-
-
 
                 </div>
 
@@ -115,10 +93,7 @@
                 </div>
                 @endforeach
             </div>
-
-
         </div>
     </section>
-    <!-- Product/ -->
+    <!-- Content page/ -->
 @endsection
-

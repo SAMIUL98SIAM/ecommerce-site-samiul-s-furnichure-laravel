@@ -41,7 +41,7 @@
                         <li class="active-menu">
                             <a href="#">SHOPS</a>
                             <ul class="sub-menu">
-                                <li><a href="{{route('frontend.product_detail')}}">Products</a></li>
+                                <li><a href="{{route('frontend.product_list')}}">Products</a></li>
                                 <li><a href="">Checkout</a></li>
                                 <li><a href="{{route('frontend.shopping_cart')}}">Cart</a></li>
                             </ul>
@@ -119,7 +119,7 @@
             <li>
                 <a href="#">SHOPS</a>
                 <ul class="sub-menu-m">
-                    <li><a href="{{route('frontend.product_detail')}}">Products</a></li>
+                    <li><a href="{{route('frontend.product_list')}}">Products</a></li>
                     <li><a href="">Checkout</a></li>
                     <li><a href="{{route('frontend.shopping_cart')}}">Cart</a></li>
                 </ul>

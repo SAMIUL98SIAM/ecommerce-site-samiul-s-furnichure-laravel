@@ -19,7 +19,7 @@
             <img class="profile-user-img img-fluid img-circle" src="{{!empty(Auth::user()->image)?url('/scripts/public/upload/user_image/'.Auth::user()->image):url('/upload/no_image.jpg/')}}" alt="User profile picture">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{route('profiles.view')}}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
