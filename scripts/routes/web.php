@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('frontend.home');
-Route::get('/shopping-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'shopping_cart'])->name('frontend.shopping_cart');
 Route::get('/contact-us', [App\Http\Controllers\Frontend\FrontendController::class, 'contact_us'])->name('frontend.contact_us');
 Route::post('/contact-us', [App\Http\Controllers\Frontend\EmailController::class, 'email_send'])->name('frontend.contact_us.store');
 Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class, 'about_us'])->name('frontend.about_us');
@@ -25,6 +24,15 @@ Route::get('/product-details/{slug}', [App\Http\Controllers\Frontend\FrontendCon
 Route::get('/product-list', [App\Http\Controllers\Frontend\FrontendController::class, 'product_list'])->name('frontend.product_list');
 Route::get('/product-category/{category_id}', [App\Http\Controllers\Frontend\FrontendController::class, 'categoryWiseProduct'])->name('frontend.categoryWiseProduct');
 Route::get('/product-brand/{brand_id}', [App\Http\Controllers\Frontend\FrontendController::class, 'brandWiseProduct'])->name('frontend.brandWiseProduct');
+
+/*Shopping Cart*/
+Route::post('/add-to-cart', [App\Http\Controllers\Frontend\CartController::class, 'addToCart'])->name('frontend.cart.add');
+// Route::get('/show-cart', [App\Http\Controllers\Frontend\CartController::class, 'showCart'])->name('frontend.cart.show');
+Route::get('/shopping-cart', [App\Http\Controllers\Frontend\CartController::class, 'shopping_cart'])->name('frontend.shopping_cart');
+Route::post('/update-to-cart', [App\Http\Controllers\Frontend\CartController::class, 'updateToCart'])->name('frontend.cart.update');
+Route::get('/delete-cart/{rowId}', [App\Http\Controllers\Frontend\CartController::class, 'deleteCart'])->name('frontend.cart.delete');
+
+/*Shopping Cart*/
 
 
 

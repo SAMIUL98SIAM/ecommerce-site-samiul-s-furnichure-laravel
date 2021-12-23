@@ -20,6 +20,13 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/main.css')}}">
     @yield('styles')
+    <script src="{{asset('/frontend/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+    <style type="text/css">
+        .notifyjs-corner{
+            z-index: 10000 !important;
+        }
+    </style>
 </head>
 <body class="animsition">
 
@@ -33,6 +40,20 @@
 
 	<!-- Main Content -->
     @yield('content')
+    @if(session()->has('success'))
+        <script type="text/javascript">
+            $(function(){
+                $.notify("{{session()->get('success')}}",{globalPosition:'top right',className:'success'});
+            });
+        </script>
+    @endif
+    @if(session()->has('error'))
+    <script type="text/javascript">
+       $(function(){
+           $.notify("{{session()->get('error')}}",{globalPosition:'top right',className:'error'});
+       });
+    </script>
+    @endif
 	<!-- Main Content/ -->
 
 	<!-- Footer -->
@@ -181,7 +202,6 @@
 	</div>
     <!-- Modal1/ -->
 </body>
-    <script src="{{asset('/frontend/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 	<script src="{{asset('/frontend/vendor/animsition/js/animsition.min.js')}}"></script>
 	<script src="{{asset('/frontend/vendor/bootstrap/js/popper.js')}}"></script>
 	<script src="{{asset('/frontend/vendor/bootstrap/js/bootstrap.min.js')}}"></script>

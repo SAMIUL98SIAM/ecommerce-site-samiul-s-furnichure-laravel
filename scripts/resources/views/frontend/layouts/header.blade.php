@@ -1,3 +1,7 @@
+@php
+    $contents = Cart::content();
+    $total = '0';
+@endphp
 <header>
     <!-- Header desktop -->
     <div class="container-menu-desktop">
@@ -13,11 +17,11 @@
 
                 <div class="right-top-bar flex-w h-full">
                     <ul class="social">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="facebook"><a href="{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                        <li class="twitter"><a href="{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                        <li class="google-plus"><a href="{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="youtube"><a href="{{$contact->youtube}}"><i class="fa fa-youtube-play"></i></a></li>
+                        <li class="linkedin"><a href="{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +63,7 @@
 
                 <!-- Icon header -->
                 <div class="wrap-icon-header flex-w flex-r-m">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{Cart::count()}}">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
                 </div>
@@ -76,7 +80,7 @@
 
         <!-- Icon header -->
         <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="{{Cart::count()}}">
                 <i class="zmdi zmdi-shopping-cart"></i>
             </div>
         </div>
@@ -104,11 +108,11 @@
             <li>
                 <div class="right-top-bar flex-w h-full">
                     <ul class="social">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="facebook"><a href="{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                        <li class="twitter"><a href="{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                        <li class="google-plus"><a href="{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="youtube"><a href="{{$contact->youtube}}"><i class="fa fa-youtube-play"></i></a></li>
+                        <li class="linkedin"><a href="{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </li>

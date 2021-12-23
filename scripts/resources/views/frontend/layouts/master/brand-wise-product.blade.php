@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
-@section('style')
-    <style>
+@section('styles')
+    <style type="text/css">
         .active{
-            background-color: azure;
+            background-color: rgba(240, 255, 253, 0.445);
             color: black;
         }
     </style>

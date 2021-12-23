@@ -78,12 +78,6 @@ class FrontendController extends Controller
         return view('frontend.layouts.master.product-detail',$data);
     }
 
-    public function shopping_cart()
-    {
-        $data['logo'] = Logo::first();
-        $data['contact'] = Contact::first();
-        return view('frontend.layouts.master.shopping-cart',$data);
-    }
 
     public function contact_us()
     {
