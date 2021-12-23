@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('frontend.home');
-Route::get('/product-detail', [App\Http\Controllers\Frontend\FrontendController::class, 'product_detail'])->name('frontend.product_detail');
 Route::get('/shopping-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'shopping_cart'])->name('frontend.shopping_cart');
 Route::get('/contact-us', [App\Http\Controllers\Frontend\FrontendController::class, 'contact_us'])->name('frontend.contact_us');
 Route::post('/contact-us', [App\Http\Controllers\Frontend\EmailController::class, 'email_send'])->name('frontend.contact_us.store');
 Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class, 'about_us'])->name('frontend.about_us');
+Route::get('/product-details/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'product_details'])->name('frontend.product_details');
 
 Route::get('/product-list', [App\Http\Controllers\Frontend\FrontendController::class, 'product_list'])->name('frontend.product_list');
 Route::get('/product-category/{category_id}', [App\Http\Controllers\Frontend\FrontendController::class, 'categoryWiseProduct'])->name('frontend.categoryWiseProduct');

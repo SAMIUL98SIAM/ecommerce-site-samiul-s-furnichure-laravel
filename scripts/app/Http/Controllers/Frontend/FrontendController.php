@@ -9,6 +9,9 @@ use App\Models\About;
 use App\Models\Category;
 use App\Models\Slider;
 use App\Models\Product;
+use App\Models\ProductColor;
+use App\Models\ProductSize;
+use App\Models\ProductSubImage;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -24,33 +27,6 @@ class FrontendController extends Controller
         $data['products'] = Product::orderBy('id','desc')->get();
         // $data['products'] = Product::orderBy('id','desc')->paginate(6);
         return view('frontend.layouts.master.home',$data);
-    }
-    public function product_detail()
-    {
-        $data['logo'] = Logo::first();
-        $data['contact'] = Contact::first();
-        return view('frontend.layouts.master.product-detail',$data);
-    }
-
-    public function shopping_cart()
-    {
-        $data['logo'] = Logo::first();
-        $data['contact'] = Contact::first();
-        return view('frontend.layouts.master.shopping-cart',$data);
-    }
-
-    public function contact_us()
-    {
-        $data['logo'] = Logo::first();
-        $data['contact'] = Contact::first();
-        return view('frontend.layouts.master.contact-us',$data);
-    }
-    public function about_us()
-    {
-        $data['logo'] = Logo::first();
-        $data['contact'] = Contact::first();
-        $data['about'] = About::first();
-        return view('frontend.layouts.master.about-us',$data);
     }
 
     public function product_list()
@@ -87,6 +63,43 @@ class FrontendController extends Controller
         $data['products'] = Product::where('brand_id',$brand_id)->orderBy('id','desc')->get();
         return view('frontend.layouts.master.brand-wise-product',$data);
     }
+
+
+    public function product_details($slug)
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+        $data['product'] = Product::where('slug',$slug)->first();
+
+        $data['product_sub_images'] = ProductSubImage::where('product_id',$data['product']->id)->get();
+        $data['product_colors'] = ProductColor::where('product_id',$data['product']->id)->get();
+        $data['product_sizes'] = ProductSize::where('product_id',$data['product']->id)->get();
+
+        return view('frontend.layouts.master.product-detail',$data);
+    }
+
+    public function shopping_cart()
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+        return view('frontend.layouts.master.shopping-cart',$data);
+    }
+
+    public function contact_us()
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+        return view('frontend.layouts.master.contact-us',$data);
+    }
+    public function about_us()
+    {
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+        $data['about'] = About::first();
+        return view('frontend.layouts.master.about-us',$data);
+    }
+
+
 
 
 }

@@ -1,4 +1,12 @@
 @extends('frontend.layouts.master')
+@section('style')
+    <style>
+        .active{
+            background-color: azure;
+            color: black;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Slider -->
     <section class="section-slide">
@@ -27,21 +35,19 @@
         </div>
     </section>
     <!-- Slider/ -->
-
+    @php
+    $route = Route::current()->getName();
+    @endphp
     <!-- Product -->
     <section class="bg0 p-t-23 p-b-140">
         <div class="container">
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" href="{{route('frontend.product_list')}}">All Product</a>
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{$route==('frontend.product_list') ? 'how-active1':''}}" href="{{route('frontend.product_list')}}">All Product</a>
 
                     @foreach ($categories as $category)
-                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" href="{{route('frontend.categoryWiseProduct',$category->category_id)}}">{{$category->category->name}}</a>
+                    <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{request()->is('product-category/'.$category->category_id) ? 'how-active1':''}}" href="{{route('frontend.categoryWiseProduct',$category->category_id)}}">{{$category->category->name}}</a>
                     @endforeach
-
-
-
                 </div>
 
                 <div class="flex-w flex-c-m m-tb-10">
@@ -78,7 +84,7 @@
                             </div>
                             <div style="padding: 0px 20px 20px 20px;">
                                 @foreach ($brands as $brand)
-                                <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" href="{{route('frontend.brandWiseProduct',$brand->brand_id)}}" class="filter-link stext-106 trans-04" style="color: #fff">{{$brand->brand->name}}</a>
+                                <a class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{request()->is('product-brand/'.$brand->brand_id) ? 'active':''}}" href="{{route('frontend.brandWiseProduct',$brand->brand_id)}}" class="filter-link stext-106 trans-04" style="color: #fff">{{$brand->brand->name}}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -94,7 +100,7 @@
                         <div class="block2-pic hov-img0">
                             <img src="{{!empty($product->image) ? url('/scripts/public/upload/product_image/'.$product->image):url('/upload/no_image.jpg')}}" width="180px" height="200px" alt="IMG-PRODUCT">
 
-                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            <a href="{{route('frontend.product_details',$product->slug)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                 Add to Card
                             </a>
                         </div>
