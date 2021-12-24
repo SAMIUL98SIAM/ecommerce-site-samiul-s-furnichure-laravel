@@ -57,7 +57,7 @@
                             <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
                         </li>
 
-                        <li><a href="">LOGIN</a></li>
+                        <li><a href="{{route('frontend.customer.login')}}">LOGIN</a></li>
                     </ul>
                 </div>
 
@@ -137,7 +137,7 @@
             <li>
                 <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
             </li>
-            <li><a href="">LOGIN</a></li>
+            <li><a href="{{route('frontend.customer.login')}}">LOGIN</a></li>
         </ul>
     </div>
 </header>

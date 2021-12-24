@@ -33,6 +33,8 @@ Route::post('/update-to-cart', [App\Http\Controllers\Frontend\CartController::cl
 Route::get('/delete-cart/{rowId}', [App\Http\Controllers\Frontend\CartController::class, 'deleteCart'])->name('frontend.cart.delete');
 /*Shopping Cart*/
 
+Route::get('/customer-login', [App\Http\Controllers\Frontend\CheckoutController::class, 'customerLogin'])->name('frontend.customer.login');
+Route::get('/customer-signup', [App\Http\Controllers\Frontend\CheckoutController::class, 'customerSignup'])->name('frontend.customer.signup');
 
 
 Auth::routes();

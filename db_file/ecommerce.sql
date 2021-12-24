@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2021 at 04:21 PM
+-- Generation Time: Dec 23, 2021 at 11:50 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -311,7 +311,8 @@ INSERT INTO `products` (`id`, `category_id`, `brand_id`, `name`, `price`, `slug`
 (6, 3, 1, 'Full width table', 2000, 'full-width-table', 'A \'Smart Chair\' was fitted with six pressure sensors and one angle sensor. Every second the chair calculates a grade indicating the quality of the sitting posture. When the grade is too low for too long, the user receives feedback through a vibration signal under the right thigh.', 'The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.', '2021122315151.jpg', '2021-12-23 09:15:30', '2021-12-23 09:15:30'),
 (7, 4, 2, 'Beutiful Workstation', 50000, 'beutiful-workstation', 'A \'Smart Chair\' was fitted with six pressure sensors and one angle sensor. Every second the chair calculates a grade indicating the quality of the sitting posture. When the grade is too low for too long, the user receives feedback through a vibration signal under the right thigh.', 'The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.', '2021122315172.jpg', '2021-12-23 09:17:43', '2021-12-23 09:17:43'),
 (8, 2, 2, 'Sofa set', 31000, 'sofa-set', 'A \'Smart Chair\' was fitted with six pressure sensors and one angle sensor. Every second the chair calculates a grade indicating the quality of the sitting posture. When the grade is too low for too long, the user receives feedback through a vibration signal under the right thigh.', 'The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.', '2021122315191.jpg', '2021-12-23 09:19:49', '2021-12-23 09:19:49'),
-(9, 3, 1, 'Reading table', 12000, 'reading-table', 'A \'Smart Chair\' was fitted with six pressure sensors and one angle sensor. Every second the chair calculates a grade indicating the quality of the sitting posture. When the grade is too low for too long, the user receives feedback through a vibration signal under the right thigh.', 'The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.', '2021122315211.jpg', '2021-12-23 09:21:27', '2021-12-23 09:21:27');
+(9, 3, 1, 'Reading table', 12000, 'reading-table', 'A \'Smart Chair\' was fitted with six pressure sensors and one angle sensor. Every second the chair calculates a grade indicating the quality of the sitting posture. When the grade is too low for too long, the user receives feedback through a vibration signal under the right thigh.', 'The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.', '2021122315211.jpg', '2021-12-23 09:21:27', '2021-12-23 09:21:27'),
+(10, 1, 2, 'Swivel chair', 7000, 'swivel-chair', 'A \'Smart Chair\' was fitted with six pressure sensors and one angle sensor. Every second the chair calculates a grade indicating the quality of the sitting posture. When the grade is too low for too long, the user receives feedback through a vibration signal under the right thigh.', 'The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.The Smart Chair also includes Bluetooth speakers, chromotherapy lights to boost your mood, and an smartphone app to control your chair. Feel great every day daily massage in the convenience of home.', '2021122315251.jpg', '2021-12-23 09:25:48', '2021-12-23 09:25:48');
 
 -- --------------------------------------------------------
 
@@ -356,7 +357,10 @@ INSERT INTO `product_colors` (`id`, `product_id`, `color_id`, `created_at`, `upd
 (30, 8, 1, '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
 (31, 8, 4, '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
 (32, 8, 6, '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
-(33, 9, 4, '2021-12-23 09:21:28', '2021-12-23 09:21:28');
+(34, 10, 2, '2021-12-23 09:25:49', '2021-12-23 09:25:49'),
+(35, 10, 3, '2021-12-23 09:25:49', '2021-12-23 09:25:49'),
+(36, 9, 2, '2021-12-23 12:07:00', '2021-12-23 12:07:00'),
+(37, 9, 4, '2021-12-23 12:07:00', '2021-12-23 12:07:00');
 
 -- --------------------------------------------------------
 
@@ -394,7 +398,8 @@ INSERT INTO `product_sizes` (`id`, `product_id`, `size_id`, `created_at`, `updat
 (21, 8, 1, '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
 (22, 8, 2, '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
 (23, 8, 3, '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
-(24, 9, 1, '2021-12-23 09:21:28', '2021-12-23 09:21:28');
+(25, 10, 1, '2021-12-23 09:25:49', '2021-12-23 09:25:49'),
+(26, 9, 1, '2021-12-23 12:07:00', '2021-12-23 12:07:00');
 
 -- --------------------------------------------------------
 
@@ -436,7 +441,9 @@ INSERT INTO `product_sub_images` (`id`, `product_id`, `sub_image`, `created_at`,
 (19, 8, '2021122315192.jpg', '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
 (20, 8, '2021122315193.jpg', '2021-12-23 09:19:50', '2021-12-23 09:19:50'),
 (21, 9, '2021122315212.jpg', '2021-12-23 09:21:28', '2021-12-23 09:21:28'),
-(22, 9, '2021122315213.jpg', '2021-12-23 09:21:28', '2021-12-23 09:21:28');
+(22, 9, '2021122315213.jpg', '2021-12-23 09:21:28', '2021-12-23 09:21:28'),
+(23, 10, '2021122315252.jpeg', '2021-12-23 09:25:49', '2021-12-23 09:25:49'),
+(24, 10, '2021122315253jpg.jpg', '2021-12-23 09:25:49', '2021-12-23 09:25:49');
 
 -- --------------------------------------------------------
 
@@ -715,25 +722,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_colors`
 --
 ALTER TABLE `product_colors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `product_sizes`
 --
 ALTER TABLE `product_sizes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `product_sub_images`
 --
 ALTER TABLE `product_sub_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `sizes`
