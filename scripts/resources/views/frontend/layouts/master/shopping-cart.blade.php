@@ -25,16 +25,16 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-12" style="padding-bottom: 30px;">
                     <div class="wrap-table-shopping-cart">
-                        <table class="table-shopping-cart">
+                        <table class="table table-bordered">
                             <tr class="table_head">
-                                <th class="column-1">Product</th>
-                                <th class="column-2"></th>
-                                <th class="column-2">Size</th>
-                                <th class="column-2">Color</th>
-                                <th class="column-3">Price</th>
-                                <th class="column-4">Quantity</th>
-                                <th class="column-5">Total</th>
-                                <th class="column-6">Action</th>
+                                <th>Product</th>
+                                <th>Image</th>
+                                <th>Size</th>
+                                <th>Color</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
                             </tr>
                             @php
                                 $contents = Cart::content();
@@ -42,16 +42,16 @@
                             @endphp
                             @foreach ($contents as $content)
                             <tr class="table_row">
-                                <td class="column-1">{{$content->name}}</td>
-                                <td class="column-2">
+                                <td>{{$content->name}}</td>
+                                <td>
                                     <div>
                                         <img src="{{asset('/scripts/public/upload/product_image/'.$content->options->image)}}" style="width: 90px;height:90px;border:1px solid #000;" alt="IMG">
                                     </div>
                                 </td>
-                                <td class="column-2">{{$content->options->size_name}}</td>
-                                <td class="column-2">{{$content->options->color_name}}</td>
-                                <td class="column-3">{{$content->price}} TK</td>
-                                <td class="column-4">
+                                <td>{{$content->options->size_name}}</td>
+                                <td>{{$content->options->color_name}}</td>
+                                <td>{{$content->price}} TK</td>
+                                <td style="width: 200px;min-width:200px;" >
                                     <form action="{{route('frontend.cart.update')}}" method="POST">
                                     @csrf
                                         <div>
@@ -61,8 +61,8 @@
                                         </div>
                                     </form>
                                 </td>
-                                <td class="column-5">{{$content->subtotal}}</td>
-                                <td class="column-6">
+                                <td>{{$content->subtotal}}</td>
+                                <td>
                                     <a class="btn btn-danger" href="{{route('frontend.cart.delete',$content->rowId)}}"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
