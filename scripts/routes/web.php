@@ -36,7 +36,9 @@ Route::get('/delete-cart/{rowId}', [App\Http\Controllers\Frontend\CartController
 Route::get('/customer-login', [App\Http\Controllers\Frontend\CheckoutController::class, 'customerLogin'])->name('frontend.customer.login');
 Route::get('/customer-signup', [App\Http\Controllers\Frontend\CheckoutController::class, 'customerSignup'])->name('frontend.customer.signup');
 Route::post('/customer-signup-store', [App\Http\Controllers\Frontend\CheckoutController::class, 'customerSignupStore'])->name('frontend.customer.signup.store');
+
 Route::get('/email-verify', [App\Http\Controllers\Frontend\CheckoutController::class, 'emailVerify'])->name('frontend.customer.email_verify');
+Route::post('/email-verify-store', [App\Http\Controllers\Frontend\CheckoutController::class, 'emailVerifyStore'])->name('frontend.customer.email_verify_store');
 
 Auth::routes();
 

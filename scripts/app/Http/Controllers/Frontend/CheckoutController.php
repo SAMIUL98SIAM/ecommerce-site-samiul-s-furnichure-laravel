@@ -88,6 +88,7 @@ class CheckoutController extends Controller
 
     }
 
+
     public function emailVerify()
     {
         $data['logo'] = Logo::first();
@@ -95,34 +96,6 @@ class CheckoutController extends Controller
         return view('frontend.layouts.master.email-verify',$data);
     }
 
-    // public function email_send(Request $request)
-    // {
-    //     $contact = new Communicate();
-    //     $contact->name = $request->name;
-    //     $contact->mobile = $request->mobile;
-    //     $contact->email = $request->email;
-    //     $contact->msg = $request->msg;
-    //     $contact->save();
-
-    //     $data = array(
-    //         'name'=>$request->fname,
-    //         'mobile'=>$request->mobile,
-    //         'email'=>$request->email,
-    //         'msg'=>$request->msg
-    //     );
-    //     Mail::send('frontend.emails.contact',$data,function($messages) use($data){
-    //         $messages->from('samiulsiam59@gmail.com','Orbitech Bd');
-    //         $messages->to($data['email']);
-    //         $messages->from($data['email'],'Orbitech Bd');
-    //         // $messages->subject('Thanks for contact us');
-    //         // $messages->from($data['email'],'Orbitech Bd');
-    //         // $messages->to('samiulsiam59@gmail.com');
-    //         $messages->subject('Thanks for contact us');
-    //     });
-
-
-    //     return redirect()->back()->with('success','Your message successfully sends');
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -130,9 +103,23 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function emailVerifyStore(Request $request)
     {
-        //
+        $this->validate($request,[
+            'email'=> 'required',
+            'code'=>'required'
+        ]);
+        $checkData = User::where('email',$request->email)->where('code',$request->code)->first();
+        if($checkData)
+        {
+           $checkData->status = 1 ;
+           $checkData->save();
+           return redirect()->route('frontend.customer.login')->with('success','You have successfully verified, please, logged in');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Sorry email or verification code does not match');
+        }
     }
 
     /**

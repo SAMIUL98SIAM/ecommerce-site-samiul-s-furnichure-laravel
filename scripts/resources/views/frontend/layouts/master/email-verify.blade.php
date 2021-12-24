@@ -39,20 +39,23 @@ a{
         <div class="container">
             <div class="simple-login-container">
                 <h2>Email Verify</h2>
-                <form action="" method="post">
+                <form action="{{route('frontend.customer.email_verify_store')}}" method="post" id="myForm">
+                    @csrf
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                         </div>
+                        <font style="color: red">{{($errors->has('email'))?($errors->first('email')):''}}</font>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <input type="code" name="code" id="code" placeholder="Verify Code" class="form-control">
                         </div>
+                        <font style="color: red">{{($errors->has('code'))?($errors->first('code')):''}}</font>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input type="submit" value="submit" class="btn btn-block btn-login">
+                            <input type="submit" value="Verify" class="btn btn-block btn-login">
 
                         </div>
                     </div>
@@ -62,3 +65,43 @@ a{
     </section>
     <!-- Content page/ -->
 @endsection
+
+@section('scripts')
+<script>
+    $(function () {
+      $('#myForm').validate({
+        rules: {
+          code: {
+              required: true,
+          },
+          email: {
+            required: true,
+            email: true,
+          }
+
+        },
+        messages: {
+          code: {
+            required: "Please enter a code",
+          },
+          email: {
+            required: "Please enter a email address",
+            email: "Please enter a vaild email address"
+          },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        }
+      });
+    });
+</script>
+@endsection
+
