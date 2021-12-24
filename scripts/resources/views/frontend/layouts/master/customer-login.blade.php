@@ -38,8 +38,15 @@ a{
     <section class="bg0 p-t-104 p-b-116">
         <div class="container">
             <div class="simple-login-container">
+                @if (Session::get('message'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{Session::get('message')}}</strong>
+                    </div>
+                @endif
                 <h2>Login</h2>
-                <form action="" method="post">
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <input type="email" name="email" id="email" class="form-control" placeholder="Email">

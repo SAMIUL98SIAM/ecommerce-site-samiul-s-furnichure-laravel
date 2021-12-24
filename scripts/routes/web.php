@@ -40,12 +40,17 @@ Route::post('/customer-signup-store', [App\Http\Controllers\Frontend\CheckoutCon
 Route::get('/email-verify', [App\Http\Controllers\Frontend\CheckoutController::class, 'emailVerify'])->name('frontend.customer.email_verify');
 Route::post('/email-verify-store', [App\Http\Controllers\Frontend\CheckoutController::class, 'emailVerifyStore'])->name('frontend.customer.email_verify_store');
 
+
+
 Auth::routes();
 
+Route::group(['middleware'=>['auth','customer']],function (){
+    Route::get('/dashboard', [App\Http\Controllers\Frontend\DashboardController::class, 'index'])->name('frontend.dashboard');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>['auth','admin']],function (){
 
-Route::group(['middleware'=>'auth'],function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::prefix('users')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users.view');

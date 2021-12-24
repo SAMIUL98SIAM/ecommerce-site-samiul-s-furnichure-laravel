@@ -57,7 +57,26 @@
                             <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
                         </li>
 
+                        @if (@Auth::user()->id != Null)
+                        <li>
+                            <a href="#">Accounts</a>
+                            <ul class="sub-menu">
+                                <li><a href="">My Dashboard</a></li>
+                                <li><a href="">My Profile</a></li>
+                                <li><a href="">My Order</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf</form>
+                                </li>
+
+                            </ul>
+                        </li>
+                        @else
                         <li><a href="{{route('frontend.customer.login')}}">LOGIN</a></li>
+                        @endif
+
                     </ul>
                 </div>
 
@@ -137,7 +156,29 @@
             <li>
                 <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
             </li>
+
+            @if (@Auth::user()->id != Null)
+            <li>
+                <a href="#">Accounts</a>
+                <ul class="sub-menu-m">
+                    <li><a href="">My Dashboard</a></li>
+                    <li><a href="">My Profile</a></li>
+                    <li><a href="">My Order</a></li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf</form>
+                    </li>
+                </ul>
+                <span class="arrow-main-menu-m">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
+            </li>
+            @else
             <li><a href="{{route('frontend.customer.login')}}">LOGIN</a></li>
+            @endif
+
         </ul>
     </div>
 </header>

@@ -22,10 +22,15 @@
       <a href="" class="h1">{{ __('Login') }}</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
+        @if (Session::get('message'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{Session::get('message')}}</strong>
+        </div>
+        @endif
       <form action="{{ route('login') }}" method="post">
         @csrf
+
         <div class="input-group mb-3">
           <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email" >
           <div class="input-group-append">
