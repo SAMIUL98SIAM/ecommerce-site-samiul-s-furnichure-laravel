@@ -262,6 +262,37 @@
                 </ul>
             </li>
 
+            <li class="nav-item has-treeview {{$prefix=='/products'?'menu-open':''}}">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Customer Management
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+
+                    <li class="nav-item">
+                        <a href="{{route('customers.view')}}" class="nav-link {{$route=='customers.view'?'active':''}}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Customer</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('customers.viewDraft')}}" class="nav-link {{$route=='customers.viewDraft'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>View Draft Customer</p>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </li>
+
+
         </ul>
     </nav>
 </aside>

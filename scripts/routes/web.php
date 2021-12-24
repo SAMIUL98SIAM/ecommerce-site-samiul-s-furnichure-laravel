@@ -146,4 +146,10 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/details/{id}',[\App\Http\Controllers\Admin\ProductController::class,'show'])->name('products.details');
     });
 
+    Route::prefix('customers')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\CustomerController::class,'index'])->name('customers.view');
+        Route::get('/draft/view',[\App\Http\Controllers\Admin\CustomerController::class,'viewDraft'])->name('customers.viewDraft');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'destroy'])->name('customers.delete');
+    });
+
 });
