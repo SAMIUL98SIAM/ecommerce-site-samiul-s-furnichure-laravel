@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2021 at 11:50 PM
+-- Generation Time: Dec 24, 2021 at 02:38 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -512,16 +512,8 @@ CREATE TABLE `users` (
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `religion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dob` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'admin=head of software,operator=computer operator,user = employee',
-  `join_date` date DEFAULT NULL,
-  `designation_id` int(11) DEFAULT NULL,
-  `salary` double DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=inactive,1=active',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -532,9 +524,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `email_verified_at`, `password`, `mobile`, `address`, `gender`, `image`, `fname`, `mname`, `religion`, `id_no`, `dob`, `code`, `role`, `join_date`, `designation_id`, `salary`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Md Samiul Hoque', 'samiulsiam59@gmail.com', NULL, '$2y$10$tZ.KKhASEY7uf.MN9MBCMOkHkBtkJz6nJdSnODjuegRIYdm49OSsa', '01992569682', 'Uttara, Dhaka', 'Male', '202112231422261256220_678384216879662_9107077738123579116_n.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 'Admin', NULL, NULL, NULL, 1, 'eG7defalbRdn97Zh3hLqqtg7gKAqv7P93XTmcueSYKwNZ32XhlsQYDJ9V2kd', '2021-12-23 07:57:17', '2021-12-23 08:22:37'),
-(2, 'admin', 'Sharmin Mumu', 'mumu12@gmail.com', NULL, '$2y$10$MDJ/ICGaJo0gw2hqNH33X.snHaqIyzaNLqXO7nLZSeXGSbVbtyuwa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2589', 'Operator', NULL, NULL, NULL, 1, NULL, '2021-12-23 08:10:14', '2021-12-23 08:10:14');
+INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `email_verified_at`, `password`, `mobile`, `address`, `gender`, `image`, `code`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'Md Samiul Hoque', 'samiulsiam59@gmail.com', NULL, '$2y$10$tZ.KKhASEY7uf.MN9MBCMOkHkBtkJz6nJdSnODjuegRIYdm49OSsa', '01992569682', 'Uttara, Dhaka', 'Male', '202112231422261256220_678384216879662_9107077738123579116_n.jpg', NULL, 'Admin', 1, 'MZcFpmOUyTHoDfAfW2i35c1G9jNR43xiOjUF3QwoSKZEUfha7qkSrXrhf2lq', '2021-12-23 07:57:17', '2021-12-23 08:22:37'),
+(2, 'admin', 'Sharmin Mumu', 'mumu12@gmail.com', NULL, '$2y$10$MDJ/ICGaJo0gw2hqNH33X.snHaqIyzaNLqXO7nLZSeXGSbVbtyuwa', NULL, NULL, NULL, NULL, '2589', 'Operator', 1, NULL, '2021-12-23 08:10:14', '2021-12-23 08:10:14');
 
 --
 -- Indexes for dumped tables
@@ -651,8 +643,7 @@ ALTER TABLE `sliders`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD UNIQUE KEY `users_religion_unique` (`religion`);
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -758,7 +749,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

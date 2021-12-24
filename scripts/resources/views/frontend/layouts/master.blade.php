@@ -289,6 +289,8 @@
 			})
 		});
 	</script>
-	<script src="{{asset('/frontend/js/main.j')}}s"></script>
+	<script src="{{asset('/frontend/js/main.js')}}"></script>
+    <!-- jquery-validation -->
+<script src="{{asset('/admin/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     @yield('scripts')
 </html>
