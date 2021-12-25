@@ -51,11 +51,13 @@ a{
                         <div class="col-md-12 form-group">
                             <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                         </div>
+                        <font style="color: red">{{($errors->has('email'))?($errors->first('email')):''}}</font>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
                         </div>
+                        <font style="color: red">{{($errors->has('password'))?($errors->first('password')):''}}</font>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">

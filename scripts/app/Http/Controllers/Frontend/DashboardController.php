@@ -13,6 +13,12 @@ use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductSize;
 use App\Models\ProductSubImage;
+use App\Models\Shipping;
+use App\Models\Payment;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use Cart;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -112,9 +118,12 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function payment()
     {
-        //
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+
+        return view('frontend.layouts.master.customer-payment',$data);
     }
 
     /**
@@ -124,9 +133,51 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function paymentStore(Request $request)
     {
-        //
+        $this->validate($request,[
+            'payment_method'=>'required',
+        ]);
+        Db::transaction(function() use($request){
+            $payment = new Payment();
+            $payment->payment_method = $request->payment_method ;
+            $payment->transaction_no = $request->transaction_no ;
+            $payment->save();
+
+            $order = new Order();
+            $order->user_id = Auth::user()->id;
+            $order->shipping_id = Session::get('shipping_id');
+            $order->payment_id = $payment->id ;
+            $order_data = Order::orderBy('id','desc')->first();
+            if ($order_data == null) {
+               $first_reg  = 0;
+               $order_no = $first_reg+1;
+            }
+            else
+            {
+                $order_data = Order::orderBy('id','desc')->first()->order_no;
+                $order_no = $order_data+1;
+            }
+            $order->order_no = $order_no ;
+            $order->order_total = $request->order_total ;
+            $order->status = 0;
+            $order->save();
+
+            $contents  = Cart::content();
+
+            foreach ($contents as $key => $content) {
+                $order_details = new OrderDetail();
+                $order_details->order_id = $order->id ;
+                $order_details->product_id = $content->id ;
+                $order_details->color_id = $content->options->color_id ;
+                $order_details->size_id = $content->options->size_id ;
+                $order_details->quantity = $content->qty;
+                $order_details->save();
+            }
+
+        });
+        Cart::destroy();
+        return redirect()->route('frontend.customerOrderList')->with('success','You successfully completed your order');
     }
 
     /**
@@ -135,8 +186,8 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function customerOrderList()
     {
-        //
+        dd('ok');
     }
 }

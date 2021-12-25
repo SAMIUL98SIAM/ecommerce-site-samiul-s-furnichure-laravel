@@ -16,10 +16,16 @@ use App\Models\ProductColor;
 use App\Models\ProductSize;
 use App\Models\User;
 use App\Models\ProductSubImage;
+use App\Models\Shipping;
+use App\Models\Payment;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Cart;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -128,9 +134,31 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function checkout()
     {
-        //
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+        return view('frontend.layouts.master.customer-checkout',$data);
+    }
+
+
+    public function checkoutStore(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+            'address'=> 'required',
+            'mobile_no'=>['required','regex:/(^(\+8801|8801|01|008801))[1|5-9]{1}(\d){8}$/'],
+
+        ]);
+        $checkout =  new Shipping();
+        $checkout->user_id = Auth::user()->id;
+        $checkout->name = $request->name ;
+        $checkout->mobile_no = $request->mobile_no ;
+        $checkout->email = $request->email ;
+        $checkout->address = $request->address ;
+        $checkout->save();
+        Session::put('shipping_id',$checkout->id);
+        return redirect()->route('frontend.customerPayment')->with('success','Data saved successfully');
     }
 
     /**
