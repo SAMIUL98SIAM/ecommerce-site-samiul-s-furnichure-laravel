@@ -83,8 +83,17 @@
                     <h3>Select Payment method</h3>
                 </div>
                 <div class="col-md-4">
+                    @if (Session::get('message'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{Session::get('message')}}</strong>
+                    </div>
+                    @endif
                     <form method="POST" id="myForm" action="{{route('frontend.customerPaymentStore')}}">
                     @csrf
+                    @foreach ($contents as $content)
+                    <input type="hidden" name="product_id" value="{{$content->id}}">
+                    @endforeach
                         <input type="hidden" name="order_total" value="{{$total}}">
                         <select name="payment_method" id="payment_method" class="form-control">
                             <option value="">Select Payment type</option>

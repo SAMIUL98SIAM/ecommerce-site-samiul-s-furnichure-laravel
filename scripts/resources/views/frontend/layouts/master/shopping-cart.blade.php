@@ -102,8 +102,10 @@
                         <div class="flex-w flex-m m-r-20 m-tb-5">
                             <a href="{{route('frontend.product_list')}}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Continue Shopping</a>
                             &nbsp;&nbsp;
-                            @if (@Auth::user()->id!=NULL)
+                            @if (@Auth::user()->id != NULL && Session::get('shipping_id') == NULL)
                             <a href="{{route('frontend.customer.checkout')}}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a>
+                            @elseif (@Auth::user()->id != NULL && Session::get('shipping_id') !=NULL)
+                            <a href="{{route('frontend.customerPayment')}}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a>
                             @else
                             <a href="{{route('frontend.customer.login')}}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a>
                             @endif

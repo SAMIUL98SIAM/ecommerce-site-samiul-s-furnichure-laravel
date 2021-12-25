@@ -135,49 +135,59 @@ class DashboardController extends Controller
      */
     public function paymentStore(Request $request)
     {
-        $this->validate($request,[
-            'payment_method'=>'required',
-        ]);
-        Db::transaction(function() use($request){
-            $payment = new Payment();
-            $payment->payment_method = $request->payment_method ;
-            $payment->transaction_no = $request->transaction_no ;
-            $payment->save();
-
-            $order = new Order();
-            $order->user_id = Auth::user()->id;
-            $order->shipping_id = Session::get('shipping_id');
-            $order->payment_id = $payment->id ;
-            $order_data = Order::orderBy('id','desc')->first();
-            if ($order_data == null) {
-               $first_reg  = 0;
-               $order_no = $first_reg+1;
-            }
-            else
+        if ($request->product_id == NULL) {
+            return redirect()->back()->with('message','Please add any product');
+        }
+        else
+        {
+            $this->validate($request,[
+                'payment_method'=>'required',
+            ]);
+            if($request->payment_method  == 'Bkash' && $request->transaction_no==NULL)
             {
-                $order_data = Order::orderBy('id','desc')->first()->order_no;
-                $order_no = $order_data+1;
+                return redirect()->back()->with('message','Please enter your transaction number');
             }
-            $order->order_no = $order_no ;
-            $order->order_total = $request->order_total ;
-            $order->status = 0;
-            $order->save();
+            Db::transaction(function() use($request){
+                $payment = new Payment();
+                $payment->payment_method = $request->payment_method ;
+                $payment->transaction_no = $request->transaction_no ;
+                $payment->save();
 
-            $contents  = Cart::content();
+                $order = new Order();
+                $order->user_id = Auth::user()->id;
+                $order->shipping_id = Session::get('shipping_id');
+                $order->payment_id = $payment->id ;
+                $order_data = Order::orderBy('id','desc')->first();
+                if ($order_data == null) {
+                   $first_reg  = 0;
+                   $order_no = $first_reg+1;
+                }
+                else
+                {
+                    $order_data = Order::orderBy('id','desc')->first()->order_no;
+                    $order_no = $order_data+1;
+                }
+                $order->order_no = $order_no ;
+                $order->order_total = $request->order_total ;
+                $order->status = 0;
+                $order->save();
 
-            foreach ($contents as $key => $content) {
-                $order_details = new OrderDetail();
-                $order_details->order_id = $order->id ;
-                $order_details->product_id = $content->id ;
-                $order_details->color_id = $content->options->color_id ;
-                $order_details->size_id = $content->options->size_id ;
-                $order_details->quantity = $content->qty;
-                $order_details->save();
-            }
+                $contents  = Cart::content();
 
-        });
+                foreach ($contents as $key => $content) {
+                    $order_details = new OrderDetail();
+                    $order_details->order_id = $order->id ;
+                    $order_details->product_id = $content->id ;
+                    $order_details->color_id = $content->options->color_id ;
+                    $order_details->size_id = $content->options->size_id ;
+                    $order_details->quantity = $content->qty;
+                    $order_details->save();
+                }
+
+            });
+        }
         Cart::destroy();
-        return redirect()->route('frontend.customerOrderList')->with('success','You successfully completed your order');
+            return redirect()->route('frontend.customerOrderList')->with('success','You successfully completed your order');
     }
 
     /**
@@ -188,6 +198,9 @@ class DashboardController extends Controller
      */
     public function customerOrderList()
     {
-        dd('ok');
+        $data['logo'] = Logo::first();
+        $data['contact'] = Contact::first();
+        $data['orders'] = Order::where('user_id',Auth::user()->id)->get();
+        return view('frontend.layouts.master.customer-order',$data);
     }
 }

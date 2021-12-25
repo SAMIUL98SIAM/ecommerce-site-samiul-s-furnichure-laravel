@@ -46,7 +46,15 @@
                             <a href="#">SHOPS</a>
                             <ul class="sub-menu">
                                 <li><a href="{{route('frontend.product_list')}}">Products</a></li>
-                                <li><a href="">Checkout</a></li>
+
+                                @if (@Auth::user()->id != NULL && Session::get('shipping_id') == NULL)
+                                <li><a href="{{route('frontend.customer.checkout')}}">Checkout</a></li>
+                                @elseif (@Auth::user()->id != NULL && Session::get('shipping_id') != NULL)
+                                <li><a href="{{route('frontend.customerPayment')}}">Checkout</a></li>
+                                @else
+                                <li><a href="{{route('frontend.customer.login')}}">Checkout</a></li>
+                                @endif
+
                                 <li><a href="{{route('frontend.shopping_cart')}}">Cart</a></li>
                             </ul>
                         </li>
@@ -61,9 +69,9 @@
                         <li>
                             <a href="#">Accounts</a>
                             <ul class="sub-menu">
-                                <li><a href="">My Profile</a></li>
-                                <li><a href="">Password Changes</a></li>
-                                <li><a href="">My Orders</a></li>
+                                <li><a href="{{route('frontend.dashboard')}}">My Profile</a></li>
+                                <li><a href="{{route('frontend.customerPasswordChange')}}">Password Change</a></li>
+                                <li><a href="{{route('frontend.customerOrderList')}}">My Orders</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
@@ -143,7 +151,13 @@
                 <a href="#">SHOPS</a>
                 <ul class="sub-menu-m">
                     <li><a href="{{route('frontend.product_list')}}">Products</a></li>
-                    <li><a href="">Checkout</a></li>
+                    @if(@Auth::user()->id != NULL && Session::get('shipping_id') == NULL)
+                    <li><a href="{{route('frontend.customer.checkout')}}">Checkout</a></li>
+                    @elseif (@Auth::user()->id != NULL && Session::get('shipping_id') !=NULL)
+                    <li><a href="{{route('frontend.customerPayment')}}">Checkout</a></li>
+                    @else
+                    <li><a href="{{route('frontend.customer.login')}}">Checkout</a></li>
+                    @endif
                     <li><a href="{{route('frontend.shopping_cart')}}">Cart</a></li>
                 </ul>
                 <span class="arrow-main-menu-m">
@@ -161,9 +175,9 @@
             <li>
                 <a href="#">Accounts</a>
                 <ul class="sub-menu-m">
-                    <li><a href="">My Profile</a></li>
-                    <li><a href="">Password Changes</a></li>
-                    <li><a href="">My Orders</a></li>
+                    <li><a href="{{route('frontend.dashboard')}}">My Profile</a></li>
+                    <li><a href="{{route('frontend.customerPasswordChange')}}">Password Change</a></li>
+                    <li><a href="{{route('frontend.customerOrderList')}}">My Orders</a></li>
                     <li>
                         <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
