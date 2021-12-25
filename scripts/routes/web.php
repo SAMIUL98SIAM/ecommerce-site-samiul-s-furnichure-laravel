@@ -46,6 +46,11 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth','customer']],function (){
     Route::get('/dashboard', [App\Http\Controllers\Frontend\DashboardController::class, 'index'])->name('frontend.dashboard');
+    Route::get('/customer-edit-profile', [App\Http\Controllers\Frontend\DashboardController::class, 'customerEditProfile'])->name('frontend.customerEditProfile');
+    Route::post('/customer-update-profile', [App\Http\Controllers\Frontend\DashboardController::class, 'customerUpdateProfile'])->name('frontend.customerUpdateProfile');
+
+    Route::get('/customer-password-change', [App\Http\Controllers\Frontend\DashboardController::class, 'customerPasswordChange'])->name('frontend.customerPasswordChange');
+    Route::post('/customer-password-update', [App\Http\Controllers\Frontend\DashboardController::class, 'customerPasswordUpdate'])->name('frontend.customerPasswordUpdate');
 });
 
 Route::group(['middleware'=>['auth','admin']],function (){

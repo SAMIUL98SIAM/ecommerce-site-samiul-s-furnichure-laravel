@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2021 at 02:38 PM
+-- Generation Time: Dec 24, 2021 at 08:59 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -525,8 +525,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `email_verified_at`, `password`, `mobile`, `address`, `gender`, `image`, `code`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Md Samiul Hoque', 'samiulsiam59@gmail.com', NULL, '$2y$10$tZ.KKhASEY7uf.MN9MBCMOkHkBtkJz6nJdSnODjuegRIYdm49OSsa', '01992569682', 'Uttara, Dhaka', 'Male', '202112231422261256220_678384216879662_9107077738123579116_n.jpg', NULL, 'Admin', 1, 'MZcFpmOUyTHoDfAfW2i35c1G9jNR43xiOjUF3QwoSKZEUfha7qkSrXrhf2lq', '2021-12-23 07:57:17', '2021-12-23 08:22:37'),
-(2, 'admin', 'Sharmin Mumu', 'mumu12@gmail.com', NULL, '$2y$10$MDJ/ICGaJo0gw2hqNH33X.snHaqIyzaNLqXO7nLZSeXGSbVbtyuwa', NULL, NULL, NULL, NULL, '2589', 'Operator', 1, NULL, '2021-12-23 08:10:14', '2021-12-23 08:10:14');
+(2, 'admin', 'Sharmin Mumu', 'mumu12@gmail.com', NULL, '$2y$10$TjwsLbd3sgv3BW2WZ5rao.LfjYH219nOuQ1IDQvWDaaomSy89Z7Bm', NULL, NULL, NULL, NULL, '2589', 'Operator', 1, NULL, '2021-11-23 08:10:14', '2021-11-30 17:30:05'),
+(8, 'customer', 'Md Samiul Hoque', 'samiulsiam89@gmail.com', NULL, '$2y$10$cWs1A7k/.kN9LxYR6mW7ye28bMk91qBG7jzICC92RvYbjEFuEsd.m', '01992569688', 'Uttara, Dhaka', 'Male', '202112241821261256220_678384216879662_9107077738123579116_n.jpg', '1147', NULL, 1, NULL, '2021-12-24 08:55:04', '2021-12-24 12:21:27'),
+(9, 'customer', 'Rafiqul Hoque', 'rajib113@student.aiub.edu', NULL, '$2y$10$/J7iyA7cpc3DV2ZEiDyDjuhoyBI7rdJngE4twUepMSSxu9ubRdeFO', '01992569124', NULL, NULL, NULL, '1077', NULL, 0, NULL, '2021-12-24 11:23:02', '2021-12-24 11:23:02'),
+(11, 'customer', 'akib', 'assassinakib619@gmail.com', NULL, '$2y$10$TjwsLbd3sgv3BW2WZ5rao.LfjYH219nOuQ1IDQvWDaaomSy89Z7Bm', '01992569680', NULL, NULL, NULL, '3310', NULL, 1, NULL, '2021-12-24 11:36:27', '2021-12-24 11:36:27'),
+(12, 'admin', 'Md Samiul', 'samiulsiam59@gmail.com', NULL, '$2y$10$TjwsLbd3sgv3BW2WZ5rao.LfjYH219nOuQ1IDQvWDaaomSy89Z7Bm', '01992569682', 'Uttara, Dhaka', 'Male', '202112241946261256220_678384216879662_9107077738123579116_n.jpg', NULL, 'Admin', 1, NULL, '2021-12-24 12:59:06', '2021-12-24 13:46:44'),
+(13, 'admin', 'Rajib', 'rajib13@student.aiub.edu', NULL, '$2y$10$x/1QMVzRd04dppqGgav/1umH7YKIMV/Ll9.kSW36ZFAdY.FhiSiwW', NULL, NULL, NULL, NULL, '3240', 'Operator', 1, NULL, '2021-12-24 13:54:23', '2021-12-24 13:55:28');
 
 --
 -- Indexes for dumped tables
@@ -749,7 +753,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

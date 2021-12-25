@@ -9,15 +9,14 @@
     <!-- Title page/ -->
 
     <!-- Content page -->
-    <section class="bg0 p-t-104 p-b-116">
+    <section class="about-us">
         <div class="container">
-            <div class="flex-w flex-tr">
-                <div class="row">
-                    <div class="col-md-12" style="border: 0.5px dashed grey;">
-                        {{$about->description}}
-                    </div>
+            <div class="row">
+                <div class="col-md-12" style="border: 0.5px dashed grey;">
+                    {{$about->description}}
                 </div>
             </div>
+
         </div>
     </section>
     <!-- Content page/ -->

@@ -61,9 +61,9 @@
                         <li>
                             <a href="#">Accounts</a>
                             <ul class="sub-menu">
-                                <li><a href="">My Dashboard</a></li>
                                 <li><a href="">My Profile</a></li>
-                                <li><a href="">My Order</a></li>
+                                <li><a href="">Password Changes</a></li>
+                                <li><a href="">My Orders</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
@@ -161,9 +161,9 @@
             <li>
                 <a href="#">Accounts</a>
                 <ul class="sub-menu-m">
-                    <li><a href="">My Dashboard</a></li>
                     <li><a href="">My Profile</a></li>
-                    <li><a href="">My Order</a></li>
+                    <li><a href="">Password Changes</a></li>
+                    <li><a href="">My Orders</a></li>
                     <li>
                         <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
