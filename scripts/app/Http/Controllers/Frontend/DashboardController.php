@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class DashboardController extends Controller
 {
@@ -234,7 +235,10 @@ class DashboardController extends Controller
             $data['logo'] = Logo::first();
             $data['contact'] = Contact::first();
             $data['order'] = Order::with(['order_details'])->where('id',$orderData->id)->where('user_id',Auth::user()->id)->first();
-            return view('frontend.layouts.master.customer-order-print',$data);
+            //return view('frontend.layouts.master.customer-order-print',$data);
+            $pdf = PDF::loadView('frontend.layouts.master.customer-order-print', $data);
+            $pdf->SetProtection(['copy','print'],'','pass');
+            return $pdf->stream('document.pdf');
         }
     }
 }
