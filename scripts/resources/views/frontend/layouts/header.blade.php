@@ -65,7 +65,7 @@
                             <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
                         </li>
 
-                        @if (@Auth::user()->id != Null)
+                        @if (@Auth::user()->id != Null && @Auth::user()->usertype=='customer')
                         <li>
                             <a href="#">Accounts</a>
                             <ul class="sub-menu">
@@ -171,7 +171,7 @@
                 <a href="{{route('frontend.contact_us')}}">CONTACT US</a>
             </li>
 
-            @if (@Auth::user()->id != Null)
+            @if (@Auth::user()->id != Null && @Auth::user()->usertype=='customer')
             <li>
                 <a href="#">Accounts</a>
                 <ul class="sub-menu-m">
