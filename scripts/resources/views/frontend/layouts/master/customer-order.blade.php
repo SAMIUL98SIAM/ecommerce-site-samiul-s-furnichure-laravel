@@ -38,6 +38,7 @@
                             <tr>
                                 <th>Order no</th>
                                 <th>Total Amount</th>
+                                <th>Payment Type</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -48,12 +49,18 @@
                                 <td># {{$order->order_no}}</td>
                                 <td>{{$order->order_total}}</td>
                                 <td>
+                                    {{$order->payment->payment_method}}
+                                    @if ($order->payment->payment_method=='Bkash')
+                                    (Transaction no: {{$order->payment->transaction_no}})
+                                    @endif
+                                </td>
+                                <td>
                                     @if($order->status==0) <span style="background-color: #DD4F42;padding:5px;color:#fff">Unapproved</span>
                                     @elseif($order->status==1) <span style="background-color: blue;padding:5px;color:#fff">Approved</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Details</a>
+                                    <a href="{{route('frontend.customerOrderDetails',$order->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Details</a>
                                 </td>
                             </tr>
                             @endforeach

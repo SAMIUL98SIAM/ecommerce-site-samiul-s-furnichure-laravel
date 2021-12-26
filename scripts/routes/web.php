@@ -55,10 +55,12 @@ Route::group(['middleware'=>['auth','customer']],function (){
     Route::get('/customer-password-change', [App\Http\Controllers\Frontend\DashboardController::class, 'customerPasswordChange'])->name('frontend.customerPasswordChange');
     Route::post('/customer-password-update', [App\Http\Controllers\Frontend\DashboardController::class, 'customerPasswordUpdate'])->name('frontend.customerPasswordUpdate');
 
+
     Route::get('/payment', [App\Http\Controllers\Frontend\DashboardController::class, 'payment'])->name('frontend.customerPayment');
     Route::post('/payment/store', [App\Http\Controllers\Frontend\DashboardController::class, 'paymentStore'])->name('frontend.customerPaymentStore');
 
     Route::get('/customer-order-list', [App\Http\Controllers\Frontend\DashboardController::class, 'customerOrderList'])->name('frontend.customerOrderList');
+    Route::get('/customer-order-details/{id}', [App\Http\Controllers\Frontend\DashboardController::class, 'customerOrderDetails'])->name('frontend.customerOrderDetails');
 
 });
 
