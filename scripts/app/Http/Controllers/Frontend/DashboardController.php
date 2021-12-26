@@ -219,8 +219,22 @@ class DashboardController extends Controller
             $data['order'] = Order::with(['order_details'])->where('id',$orderData->id)->where('user_id',Auth::user()->id)->first();
             return view('frontend.layouts.master.customer-order-details',$data);
         }
+    }
 
-
-
+    public function customerOrderPrint($id)
+    {
+        $orderData = Order::find($id);
+        $data['order'] = Order::where('id',$orderData->id)->where('user_id',Auth::user()->id)->first();
+        if($data['order']==false)
+        {
+            return redirect()->back()->with('error','Do not try to be oversmart');
+        }
+        else
+        {
+            $data['logo'] = Logo::first();
+            $data['contact'] = Contact::first();
+            $data['order'] = Order::with(['order_details'])->where('id',$orderData->id)->where('user_id',Auth::user()->id)->first();
+            return view('frontend.layouts.master.customer-order-print',$data);
+        }
     }
 }

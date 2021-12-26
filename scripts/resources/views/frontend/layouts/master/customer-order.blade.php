@@ -60,7 +60,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('frontend.customerOrderDetails',$order->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Details</a>
+                                    <a title="Details" href="{{route('frontend.customerOrderDetails',$order->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                    <a title="Print" target="_blank" href="{{route('frontend.customerOrderPrint',$order->id)}}" class="btn btn-info btn-sm"><i class="fa fa-print"></i> </a>
                                 </td>
                             </tr>
                             @endforeach

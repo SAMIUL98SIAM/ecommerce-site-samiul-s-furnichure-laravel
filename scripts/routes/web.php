@@ -62,6 +62,8 @@ Route::group(['middleware'=>['auth','customer']],function (){
     Route::get('/customer-order-list', [App\Http\Controllers\Frontend\DashboardController::class, 'customerOrderList'])->name('frontend.customerOrderList');
     Route::get('/customer-order-details/{id}', [App\Http\Controllers\Frontend\DashboardController::class, 'customerOrderDetails'])->name('frontend.customerOrderDetails');
 
+    Route::get('/customer-order-print/{id}', [App\Http\Controllers\Frontend\DashboardController::class, 'customerOrderPrint'])->name('frontend.customerOrderPrint');
+
 });
 
 Route::group(['middleware'=>['auth','admin']],function (){
@@ -172,5 +174,17 @@ Route::group(['middleware'=>['auth','admin']],function (){
         Route::get('/draft/view',[\App\Http\Controllers\Admin\CustomerController::class,'viewDraft'])->name('customers.viewDraft');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'destroy'])->name('customers.delete');
     });
+
+    Route::prefix('orders')->group(function(){
+        Route::get('/pending/list',[\App\Http\Controllers\Admin\OrderController::class,'pendingList'])->name('orders.pending.list');
+        Route::get('/approved/list',[\App\Http\Controllers\Admin\OrderController::class,'approvedList'])->name('orders.approved.list');
+
+        Route::get('/order/details/{id}',[\App\Http\Controllers\Admin\OrderController::class,'details'])->name('orders.details');
+
+        Route::get('/order/approve/{id}',[\App\Http\Controllers\Admin\OrderController::class,'approve'])->name('orders.approve');
+
+
+    });
+
 
 });

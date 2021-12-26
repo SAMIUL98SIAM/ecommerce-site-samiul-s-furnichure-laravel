@@ -262,11 +262,11 @@
                 </ul>
             </li>
 
-            <li class="nav-item has-treeview {{$prefix=='/products'?'menu-open':''}}">
+            <li class="nav-item has-treeview {{$prefix=='/orders'?'menu-open':''}}">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Customer Management
+                    Manage Order
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
@@ -274,20 +274,18 @@
                 <ul class="nav nav-treeview">
 
                     <li class="nav-item">
-                        <a href="{{route('customers.view')}}" class="nav-link {{$route=='customers.view'?'active':''}}">
+                        <a href="{{route('orders.pending.list')}}" class="nav-link {{$route=='orders.pending.list'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>View Customer</p>
+                        <p>Pending Order</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{route('customers.viewDraft')}}" class="nav-link {{$route=='customers.viewDraft'?'active':''}}">
+                        <a href="{{route('orders.approved.list')}}" class="nav-link {{$route=='orders.approved.list'?'active':''}}">
                           <i class="far fa-circle nav-icon"></i>
-                          <p>View Draft Customer</p>
+                          <p>Approved Order</p>
                         </a>
                     </li>
-
-
 
                 </ul>
             </li>

@@ -196,6 +196,37 @@
         });
     });
 </script>
+
+{{-- Approve --}}
+<script type="text/javascript">
+    $(function(){
+        $(document).on('click','#approve',function(e){
+            e.preventDefault();
+            var link = $(this).attr("href");
+            Swal.fire({
+                title: 'Are you sure approve it?',
+
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn-primary',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve it!'
+            }).then((result) => {
+                if (result.value)
+                {
+                    window.location.href= link;
+                    Swal.fire(
+                    'Apprved!',
+                    'Order has been apprved.',
+                    'success'
+                    )
+                }
+            })
+        });
+    });
+</script>
+{{-- Approve/ --}}
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('#image').change(function(e){
