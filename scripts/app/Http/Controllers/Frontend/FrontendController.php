@@ -13,6 +13,7 @@ use App\Models\ProductColor;
 use App\Models\ProductSize;
 use App\Models\ProductSubImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -96,6 +97,41 @@ class FrontendController extends Controller
     }
 
 
+    public function find_product(Request $request)
+    {
+        $slug = $request->slug ;
+        $data['product'] = Product::where('slug',$slug)->first();
 
+        if ($data['product']) {
+            $data['logo'] = Logo::first();
+            $data['contact'] = Contact::first();
+            $data['product'] = Product::where('slug',$slug)->first();
+            $data['product_sub_images'] = ProductSubImage::where('product_id',$data['product']->id)->get();
+            $data['product_colors'] = ProductColor::where('product_id',$data['product']->id)->get();
+            $data['product_sizes'] = ProductSize::where('product_id',$data['product']->id)->get();
+            return view('frontend.layouts.master.find-product',$data);
+        }
+        else
+        {
+            return redirect()->back()->with('error','no product does not match');
+        }
 
+    }
+
+    public function get_product(Request $request)
+    {
+        $slug = $request->slug ;
+        $productData = DB::table('products')->where('slug','LIKE','%'.$slug.'%')->get();
+
+        $html = '';
+        $html .= '<div><ul>';
+        if($productData)
+        {
+            foreach ($productData as $key => $v) {
+                $html .= '<li>'.$v->slug.'</li>';
+            }
+        }
+        $html .= '</div></ul>';
+        return response()->json($html);
+    }
 }

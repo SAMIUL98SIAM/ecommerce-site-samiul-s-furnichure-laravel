@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2021 at 08:38 PM
+-- Generation Time: Dec 27, 2021 at 04:37 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -278,7 +278,8 @@ INSERT INTO `orders` (`id`, `user_id`, `shipping_id`, `payment_id`, `order_no`, 
 (5, 8, 1, 7, 1, 8000, 0, '2021-12-25 14:39:41', '2021-12-26 12:36:48'),
 (6, 8, 2, 8, 2, 136000, 1, '2021-12-25 15:35:48', '2021-12-26 12:39:01'),
 (7, 11, 3, 9, 3, 29000, 0, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
-(8, 11, 4, 10, 4, 156000, 1, '2021-12-26 07:20:23', '2021-12-26 12:38:50');
+(8, 11, 4, 10, 4, 156000, 1, '2021-12-26 07:20:23', '2021-12-26 12:38:50'),
+(9, 11, 5, 11, 5, 150000, 1, '2021-12-27 09:35:06', '2021-12-27 09:35:54');
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,8 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `color_id`, `size_i
 (5, 7, 9, 2, 1, 1, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
 (6, 7, 3, 3, 1, 1, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
 (7, 8, 4, 2, 2, 2, '2021-12-26 07:20:23', '2021-12-26 07:20:23'),
-(8, 8, 5, 5, 1, 3, '2021-12-26 07:20:23', '2021-12-26 07:20:23');
+(8, 8, 5, 5, 1, 3, '2021-12-26 07:20:23', '2021-12-26 07:20:23'),
+(9, 9, 7, 5, 2, 3, '2021-12-27 09:35:06', '2021-12-27 09:35:06');
 
 -- --------------------------------------------------------
 
@@ -345,7 +347,8 @@ INSERT INTO `payments` (`id`, `payment_method`, `transaction_no`, `created_at`, 
 (7, 'Hand Cash', NULL, '2021-12-25 14:39:41', '2021-12-25 14:39:41'),
 (8, 'Hand Cash', NULL, '2021-12-25 15:35:48', '2021-12-25 15:35:48'),
 (9, 'Hand Cash', NULL, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
-(10, 'Bkash', '20132547578568', '2021-12-26 07:20:23', '2021-12-26 07:20:23');
+(10, 'Bkash', '20132547578568', '2021-12-26 07:20:23', '2021-12-26 07:20:23'),
+(11, 'Hand Cash', NULL, '2021-12-27 09:35:06', '2021-12-27 09:35:06');
 
 -- --------------------------------------------------------
 
@@ -557,7 +560,8 @@ INSERT INTO `shippings` (`id`, `user_id`, `name`, `email`, `mobile_no`, `address
 (1, 8, 'Salam', NULL, '01992569682', 'Uttara, Dhaka', '2021-12-25 13:13:05', '2021-12-25 13:13:05'),
 (2, 8, 'Md Samiul', 'siamahmed89@gmail.com', '01992569682', 'Uttara, Dhaka', '2021-12-25 14:57:08', '2021-12-25 14:57:08'),
 (3, 11, 'akib', 'assassinakib619@gmail.com', '01992569682', 'Badda', '2021-12-25 15:59:54', '2021-12-25 15:59:54'),
-(4, 11, 'Mirazul', 'assassinakib619@gmail.com', '01992569681', 'Hollan, Uttara, Dhaka', '2021-12-26 07:20:12', '2021-12-26 07:20:12');
+(4, 11, 'Mirazul', 'assassinakib619@gmail.com', '01992569681', 'Hollan, Uttara, Dhaka', '2021-12-26 07:20:12', '2021-12-26 07:20:12'),
+(5, 11, 'Abul', 'samiul9@gmail.com', '01992269671', 'hollan', '2021-12-27 09:35:00', '2021-12-27 09:35:00');
 
 -- --------------------------------------------------------
 
@@ -643,7 +647,7 @@ INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `email_verified_at`, `pa
 (8, 'customer', 'siam ahmed', 'siamahmed89@gmail.com', NULL, '$2y$10$7XGRndDpYhdo9T62x4QDjuRt3FRE2jYHkSx.irLDZbia7v.Uvo17O', '01992569688', 'Uttara, Dhaka', 'Male', '202112250529download.jfif', '1147', NULL, 1, NULL, '2021-12-24 08:55:04', '2021-12-25 00:08:22'),
 (9, 'customer', 'Rafiqul Hoque', 'rajib113@student.aiub.edu', NULL, '$2y$10$TjwsLbd3sgv3BW2WZ5rao.LfjYH219nOuQ1IDQvWDaaomSy89Z7Bm', '01992569124', NULL, NULL, NULL, '1077', NULL, 0, NULL, '2021-12-24 11:23:02', '2021-12-24 11:23:02'),
 (11, 'customer', 'akib', 'assassinakib619@gmail.com', NULL, '$2y$10$TjwsLbd3sgv3BW2WZ5rao.LfjYH219nOuQ1IDQvWDaaomSy89Z7Bm', '01992569680', 'Uttara, Dhaka', 'Male', '202112252158W1.PNG', '3310', NULL, 1, NULL, '2021-12-24 11:36:27', '2021-12-25 15:58:56'),
-(12, 'admin', 'Md Samiul', 'samiulsiam59@gmail.com', NULL, '$2y$10$TjwsLbd3sgv3BW2WZ5rao.LfjYH219nOuQ1IDQvWDaaomSy89Z7Bm', '01992569682', 'Uttara, Dhaka', 'Male', '202112241946261256220_678384216879662_9107077738123579116_n.jpg', NULL, 'Admin', 1, NULL, '2021-12-24 12:59:06', '2021-12-24 13:46:44'),
+(12, 'admin', 'Md Samiul', 'samiulsiam59@gmail.com', NULL, '$2y$10$8cnR7Y0Sp6fyHFYvGVWawuR4k04arMY6GiaDahCYiv5eQiFoJeUgm', '01992569682', 'Uttara, Dhaka', 'Male', '202112241946261256220_678384216879662_9107077738123579116_n.jpg', NULL, 'Admin', 1, 'x4imhK8F88dwKQdBdqsCekyRItgOe10CwDmoloQ3lw5QUufrgpSgJhGcc8GK', '2021-12-24 12:59:06', '2021-12-27 07:22:27'),
 (13, 'admin', 'Rajib', 'rajib13@student.aiub.edu', NULL, '$2y$10$x/1QMVzRd04dppqGgav/1umH7YKIMV/Ll9.kSW36ZFAdY.FhiSiwW', NULL, NULL, NULL, NULL, '3240', 'Operator', 1, NULL, '2021-12-24 13:54:23', '2021-12-24 13:55:28');
 
 --
@@ -849,19 +853,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -897,7 +901,7 @@ ALTER TABLE `product_sub_images`
 -- AUTO_INCREMENT for table `shippings`
 --
 ALTER TABLE `shippings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sizes`

@@ -21,6 +21,11 @@ Route::post('/contact-us', [App\Http\Controllers\Frontend\EmailController::class
 Route::get('/about-us', [App\Http\Controllers\Frontend\FrontendController::class, 'about_us'])->name('frontend.about_us');
 Route::get('/product-details/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'product_details'])->name('frontend.product_details');
 
+Route::post('/find-product', [App\Http\Controllers\Frontend\FrontendController::class, 'find_product'])->name('find.product');
+Route::get('/get-product', [App\Http\Controllers\Frontend\FrontendController::class, 'get_product'])->name('get.product');
+
+
+
 Route::get('/product-list', [App\Http\Controllers\Frontend\FrontendController::class, 'product_list'])->name('frontend.product_list');
 Route::get('/product-category/{category_id}', [App\Http\Controllers\Frontend\FrontendController::class, 'categoryWiseProduct'])->name('frontend.categoryWiseProduct');
 Route::get('/product-brand/{brand_id}', [App\Http\Controllers\Frontend\FrontendController::class, 'brandWiseProduct'])->name('frontend.brandWiseProduct');
