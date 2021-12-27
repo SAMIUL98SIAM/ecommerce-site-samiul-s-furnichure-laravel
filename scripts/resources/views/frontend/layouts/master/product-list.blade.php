@@ -87,12 +87,13 @@
                                     {{$product->price}} TK
                                 </span>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
+            {{$products->links()}}
+
         </div>
     </section>
     <!-- Content page/ -->

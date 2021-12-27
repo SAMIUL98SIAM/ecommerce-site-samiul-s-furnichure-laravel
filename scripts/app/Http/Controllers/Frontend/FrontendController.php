@@ -24,8 +24,8 @@ class FrontendController extends Controller
 
         $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
         $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
-        $data['products'] = Product::orderBy('id','desc')->get();
-        // $data['products'] = Product::orderBy('id','desc')->paginate(6);
+        //$data['products'] = Product::orderBy('id','desc')->get();
+        $data['products'] = Product::orderBy('id','desc')->paginate(6);
         return view('frontend.layouts.master.home',$data);
     }
 
@@ -36,8 +36,8 @@ class FrontendController extends Controller
 
         $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
         $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
-        $data['products'] = Product::orderBy('id','desc')->get();
-
+        //$data['products'] = Product::orderBy('id','desc')->get();
+        $data['products'] = Product::orderBy('id','desc')->paginate(6);
         return view('frontend.layouts.master.product-list',$data);
     }
 
@@ -49,7 +49,8 @@ class FrontendController extends Controller
         $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
         $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
 
-        $data['products'] = Product::where('category_id',$category_id)->orderBy('id','desc')->get();
+        //$data['products'] = Product::where('category_id',$category_id)->orderBy('id','desc')->get();
+        $data['products'] = Product::where('category_id',$category_id)->orderBy('id','desc')->paginate(6);
         return view('frontend.layouts.master.category-wise-product',$data);
     }
     public function brandWiseProduct($brand_id)
@@ -60,7 +61,8 @@ class FrontendController extends Controller
         $data['categories'] = Product::select('category_id')->groupBy('category_id')->get();
         $data['brands'] = Product::select('brand_id')->groupBy('brand_id')->get();
 
-        $data['products'] = Product::where('brand_id',$brand_id)->orderBy('id','desc')->get();
+        //$data['products'] = Product::where('brand_id',$brand_id)->orderBy('id','desc')->get();
+        $data['products'] = Product::where('brand_id',$brand_id)->orderBy('id','desc')->paginate(6);
         return view('frontend.layouts.master.brand-wise-product',$data);
     }
 

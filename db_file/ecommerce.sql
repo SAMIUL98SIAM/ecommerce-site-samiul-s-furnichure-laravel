@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2021 at 11:02 PM
+-- Generation Time: Dec 26, 2021 at 08:38 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -275,9 +275,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `shipping_id`, `payment_id`, `order_no`, `order_total`, `status`, `created_at`, `updated_at`) VALUES
-(5, 8, 1, 7, 1, 8000, 0, '2021-12-25 14:39:41', '2021-12-25 14:39:41'),
-(6, 8, 2, 8, 2, 136000, 0, '2021-12-25 15:35:48', '2021-12-25 15:35:48'),
-(7, 11, 3, 9, 3, 29000, 0, '2021-12-25 16:01:04', '2021-12-25 16:01:04');
+(5, 8, 1, 7, 1, 8000, 0, '2021-12-25 14:39:41', '2021-12-26 12:36:48'),
+(6, 8, 2, 8, 2, 136000, 1, '2021-12-25 15:35:48', '2021-12-26 12:39:01'),
+(7, 11, 3, 9, 3, 29000, 0, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
+(8, 11, 4, 10, 4, 156000, 1, '2021-12-26 07:20:23', '2021-12-26 12:38:50');
 
 -- --------------------------------------------------------
 
@@ -306,7 +307,9 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `color_id`, `size_i
 (3, 6, 7, 4, 2, 2, '2021-12-25 15:35:48', '2021-12-25 15:35:48'),
 (4, 7, 9, 4, 1, 1, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
 (5, 7, 9, 2, 1, 1, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
-(6, 7, 3, 3, 1, 1, '2021-12-25 16:01:04', '2021-12-25 16:01:04');
+(6, 7, 3, 3, 1, 1, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
+(7, 8, 4, 2, 2, 2, '2021-12-26 07:20:23', '2021-12-26 07:20:23'),
+(8, 8, 5, 5, 1, 3, '2021-12-26 07:20:23', '2021-12-26 07:20:23');
 
 -- --------------------------------------------------------
 
@@ -341,7 +344,8 @@ CREATE TABLE `payments` (
 INSERT INTO `payments` (`id`, `payment_method`, `transaction_no`, `created_at`, `updated_at`) VALUES
 (7, 'Hand Cash', NULL, '2021-12-25 14:39:41', '2021-12-25 14:39:41'),
 (8, 'Hand Cash', NULL, '2021-12-25 15:35:48', '2021-12-25 15:35:48'),
-(9, 'Hand Cash', NULL, '2021-12-25 16:01:04', '2021-12-25 16:01:04');
+(9, 'Hand Cash', NULL, '2021-12-25 16:01:04', '2021-12-25 16:01:04'),
+(10, 'Bkash', '20132547578568', '2021-12-26 07:20:23', '2021-12-26 07:20:23');
 
 -- --------------------------------------------------------
 
@@ -552,7 +556,8 @@ CREATE TABLE `shippings` (
 INSERT INTO `shippings` (`id`, `user_id`, `name`, `email`, `mobile_no`, `address`, `created_at`, `updated_at`) VALUES
 (1, 8, 'Salam', NULL, '01992569682', 'Uttara, Dhaka', '2021-12-25 13:13:05', '2021-12-25 13:13:05'),
 (2, 8, 'Md Samiul', 'siamahmed89@gmail.com', '01992569682', 'Uttara, Dhaka', '2021-12-25 14:57:08', '2021-12-25 14:57:08'),
-(3, 11, 'akib', NULL, '01992569682', 'Badda', '2021-12-25 15:59:54', '2021-12-25 15:59:54');
+(3, 11, 'akib', 'assassinakib619@gmail.com', '01992569682', 'Badda', '2021-12-25 15:59:54', '2021-12-25 15:59:54'),
+(4, 11, 'Mirazul', 'assassinakib619@gmail.com', '01992569681', 'Hollan, Uttara, Dhaka', '2021-12-26 07:20:12', '2021-12-26 07:20:12');
 
 -- --------------------------------------------------------
 
@@ -844,19 +849,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -892,7 +897,7 @@ ALTER TABLE `product_sub_images`
 -- AUTO_INCREMENT for table `shippings`
 --
 ALTER TABLE `shippings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sizes`
