@@ -188,6 +188,7 @@ class DashboardController extends Controller
             });
         }
         Cart::destroy();
+
             return redirect()->route('frontend.customerOrderList')->with('success','You successfully completed your order');
     }
 

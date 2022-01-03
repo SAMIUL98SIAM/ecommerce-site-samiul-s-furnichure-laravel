@@ -60,8 +60,13 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($order->status==0)
                                     <a title="Details" href="{{route('frontend.customerOrderDetails',$order->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                    @endif
+
+                                    @if($order->status==1)
                                     <a title="Print" target="_blank" href="{{route('frontend.customerOrderPrint',$order->id)}}" class="btn btn-info btn-sm"><i class="fa fa-print"></i> </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
